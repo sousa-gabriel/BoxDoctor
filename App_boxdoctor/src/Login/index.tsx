@@ -2,16 +2,18 @@ import React from 'react';
 import {
     Container,
     Title,
-    Imagem,
 } from './styles';
-import Logo from '../Img/Logo.png';
-
+import LoginStarted from '../components/Login/Started';
+import LoginProgress from '../components/Login/Progress';
 const Login: React.FC = () =>{
     return (
-        <Container>
-            <Title>BoxDoctor</Title>
-            <Imagem source={Logo}/>
-        </Container>
+        <>
+            {/* <LoginStarted /> */}
+            <LoginProgress />
+            {/* <Container>
+                <Title>BoxDoctor</Title>
+            </Container> */}
+        </>
     );
 }
 export default Login;
