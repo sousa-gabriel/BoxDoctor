@@ -22,9 +22,10 @@ const LoginProgress: React.FC = () =>{
             <Title>BoxDoctor</Title>
             <ContainerImage>
                 <ContainerImageRow>
-                    <ImagemBox source={Box} />
+                    <ImagemBox source={Box} resizeMode="contain" />
                     <ImagemPlus source={Plus} />
                 </ContainerImageRow>
+                <ImagemDoctor source={Doctor} resizeMode="contain" />
                 <ContainerWelcone style={{ shadowOffset:{width: 10,height: 5},shadowColor: '#00000055',shadowOpacity: 1.0}}>
                     <WelconeTitle >Bem vindo!!</WelconeTitle> 
                     <WelconeTitle >ao BoxDoctor!!!</WelconeTitle>
@@ -32,7 +33,6 @@ const LoginProgress: React.FC = () =>{
                         <WelconeButtonTitle >Entrar</WelconeButtonTitle>
                     </WelconeButton>
                 </ContainerWelcone>
-                <ImagemDoctor source={Doctor} />
             </ContainerImage>
         </Container>
     );

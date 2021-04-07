@@ -15,27 +15,6 @@ export const Title = styled(Text)`
     font-size: 50px;
     margin-top: 20%;
 `;
-
-export const ContainerImageRow = styled(View)`
-    flex-direction: row;
-`;
-
-export const ImagemBox = styled(Image)`
-    position: absolute;
-    top: -140px;
-    left:0px;
-`;
-export const ImagemPlus = styled(Image)`
-    position:absolute; 
-    top: -140px;
-    right: 0px; 
-`;
-
-export const ImagemDoctor = styled(Image)`
-    position: absolute; 
-    bottom: 20px;
-`;
-
 export const ContainerImage = styled(View)`
     position: absolute;
     bottom: 0px;
@@ -45,6 +24,29 @@ export const ContainerImage = styled(View)`
     border-top-right-radius: 200px; 
 `;
 
+export const ContainerImageRow = styled(View)`
+    flex-direction: row;
+`;
+
+export const ImagemBox = styled(Image)`
+    position: absolute;
+    top: -140px;
+    width: 50%;
+    left:-15px;
+`;
+export const ImagemPlus = styled(Image)`
+    position:absolute; 
+    top: -140px;
+    right: 0px; 
+`;
+
+export const ImagemDoctor = styled(Image)`
+    position: absolute; 
+    width: 70%;
+    height: 70%;
+    bottom: -20px;
+`;
+
 export const ContainerWelcone = styled(View)`
     align-items:center;
     justify-content: center;
@@ -52,8 +54,8 @@ export const ContainerWelcone = styled(View)`
     width: 200px;
     height: 100px;
     position: absolute;
-    top: 180px;
-    left: 160px;
+    bottom: 60%;
+    left: 35%;
     border-width: 1px;
     border-color: #CDCDCD;
     border-top-left-radius: 20px;
