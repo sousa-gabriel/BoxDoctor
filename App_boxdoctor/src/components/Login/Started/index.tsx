@@ -4,13 +4,13 @@ import {
     Title,
     Imagem,
 } from './styles';
-import Logo from '../../../Img/Logo.png';
+import {Imagens} from '../../../Constants';
 
 const LoginStarted: React.FC = () => {
     return (
         <Container>
             <Title>BoxDoctor</Title>
-            <Imagem source={Logo} />
+            <Imagem source={Imagens.Logo} resizeMode='contain'/>
         </Container>
     );
 }

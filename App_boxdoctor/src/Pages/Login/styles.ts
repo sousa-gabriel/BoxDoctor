@@ -3,9 +3,9 @@ import {Text, View, Image} from 'react-native';
 
 export const Container = styled(View)`
     flex: 1;
-    background: #FFF;
+    background: #fff;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
 `;
 
 export const Title = styled(Text)`
@@ -16,7 +16,10 @@ export const Title = styled(Text)`
 `;
 
 export const Imagem = styled(Image)`
-    width: 80%;
-    height: 50%;
-    margin-top: 20%;
+    position: absolute; 
+    width: 70%;
+    height: 70%;
+    left: 10px;
+    top: 50%;
 `;
+

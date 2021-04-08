@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import {Text, View, Image} from 'react-native';
-import { RectButton } from 'react-native-gesture-handler';
+import {RectButton} from 'react-native-gesture-handler';
 
 export const Container = styled(View)`
     flex:1;
