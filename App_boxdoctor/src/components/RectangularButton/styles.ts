@@ -8,7 +8,7 @@ interface ButtonProps{
 export const ContainerButton = styled(RectButton)`
    width: 200px;
    height: 50px;
-   bottom: 50px;
+   bottom: 20px;
 
    border-radius:10px;
    position: absolute;
