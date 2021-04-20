@@ -1,24 +1,28 @@
 import styled from 'styled-components';
-import {Text, TouchableOpacity, View} from 'react-native';
+import {Text, TouchableOpacity, View, SafeAreaView} from 'react-native';
 
-export const Container = styled(View)`
+export const Container = styled(SafeAreaView)`
   flex: 1;
   background: #fff;
 `;
 
 export const FooterContainer = styled(View)`
-  flex-direction: row;
   width: 100%;
+  bottom: 3px;
+  border-color: #f1f1f1;
+  border-top-width: 2px;
+  margin-bottom: 15px;
+  padding-top: 10px;
+
   position: absolute;
-  bottom: 10px;
-  margin-bottom: 20px;
+  flex-direction: row;
   align-items: center;
   justify-content: space-around;
 `;
 export const Title = styled(Text)`
-  color: #c4c4c4;
+  color: #707070;
   font-family: 'RobotoSlab-Regular';
-  font-size: 10px;
+  font-size: 15px;
   margin-top: 5px;
 `;
 export const Item = styled(TouchableOpacity)`

@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
-import TextError from '../../components/ErrorMessage';
-import RectangularButton from '../../components/RectangularButton';
-import ButtonText from '../../components/ButtonText';
+import TextError from '../../../components/ErrorMessage';
+import RectangularButton from '../../../components/RectangularButton';
+import ButtonText from '../../../components/ButtonText';
 import Modal from 'react-native-modal';
-import {Imagens} from '../../Constants';
+import {Imagens} from '../../../Constants';
 import {Alert} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {
@@ -17,7 +17,7 @@ import {
   ContainerModal,
   TitleModal,
 } from './styles';
-import Input from '../../components/InputComponent/Input';
+import Input from '../../../components/InputComponent/Input';
 
 const Login: React.FC = () => {
   const navigation = useNavigation();

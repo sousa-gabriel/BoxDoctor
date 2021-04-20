@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
-import RectangularButton from '../../components/RectangularButton';
-import {Imagens} from '../../Constants';
+import RectangularButton from '../../../components/RectangularButton';
+import {Imagens} from '../../../Constants';
+import Input from '../../../components/InputComponent/Input';
 import {
   Container,
   Title,
@@ -17,7 +18,6 @@ import Icon from 'react-native-vector-icons/Feather';
 import {Image} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {ScrollView} from 'react-native-gesture-handler';
-import Input from '../../components/InputComponent/Input';
 
 const NewUser: React.FC = () => {
   const navigation = useNavigation();

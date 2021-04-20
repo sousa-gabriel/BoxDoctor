@@ -1,7 +1,7 @@
 import React, {useRef, useState} from 'react';
 import {Animated, TouchableOpacity} from 'react-native';
-import LoginStarted from '../../components/Login/Started';
-import LoginProgress from '../../components/Login/Progress';
+import LoginStarted from '../../../components/Login/Started';
+import LoginProgress from '../../../components/Login/Progress';
 
 const Login: React.FC = () => {
   const fadeAnim = useRef(new Animated.Value(0)).current;

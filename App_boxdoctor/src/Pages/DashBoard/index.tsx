@@ -18,6 +18,7 @@ const DashBoard: React.FC = () => {
           }}>
           <Image
             source={home ? Imagens.dayon : Imagens.dayoff}
+            style={{width: 30, height: 30}}
             resizeMode="contain"
           />
           <Title style={home && {color: '#5BD2FF'}}>Home</Title>
@@ -27,6 +28,7 @@ const DashBoard: React.FC = () => {
             setboxDoctor(false), setagenda(true), sethome(false);
           }}>
           <Image
+            style={{width: 30, height: 30}}
             source={agenda ? Imagens.scheduleon : Imagens.scheduleoff}
             resizeMode="contain"
           />
@@ -37,6 +39,7 @@ const DashBoard: React.FC = () => {
             setboxDoctor(true), setagenda(false), sethome(false);
           }}>
           <Image
+            style={{width: 30, height: 30}}
             source={boxDoctor ? Imagens.boxon : Imagens.boxoff}
             resizeMode="contain"
           />
