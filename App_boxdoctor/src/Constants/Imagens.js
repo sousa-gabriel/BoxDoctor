@@ -12,4 +12,5 @@ export default {
   dayon: require('../Img/dayon.png'),
   scheduleoff: require('../Img/scheduleoff.png'),
   scheduleon: require('../Img/scheduleon.png'),
+  girlInvert: require('../Img/girlInvert.png'),
 };

@@ -8,6 +8,7 @@ export const Container = styled(SafeAreaView)`
 
 export const FooterContainer = styled(View)`
   width: 100%;
+  height: 80px;
   bottom: 3px;
   border-color: #f1f1f1;
   border-top-width: 2px;
