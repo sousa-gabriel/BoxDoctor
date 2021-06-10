@@ -1,0 +1,12 @@
+{
+  "name": "boxdoctor",
+  "displayName": "boxdoctor",
+  "expo": {
+    "name": "boxdoctor",
+    "slug": "boxdoctor",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
