@@ -6,11 +6,11 @@ export default{
         sucess: '#49E1B8',
         sucessLigth: 'rgba(73, 255,184, 0.5)',
         
-        attention: '#B80202',
+        attention: 'red',
         
         shape:'#D1D1D1',
         title:'#707070',
-        text:'#D1D1D1',
+        text:'#000',
         background:'#FFFFFF',
     },
     fonts:{

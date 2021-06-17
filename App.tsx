@@ -1,5 +1,5 @@
 import React from 'react';
-import { Login } from './src/Pages/Login/Login';
+import { Start } from './src/Pages/Start/Index';
 import {ThemeProvider} from 'styled-components';
 import theme from './src/global/styles/themes';
 import {
@@ -21,7 +21,7 @@ export default function App() {
   }
   return (
     <ThemeProvider theme={theme}>
-      <Login /> 
+      <Start /> 
     </ThemeProvider>
   )
 }
