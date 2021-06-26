@@ -1,27 +1,27 @@
 import React from 'react';
-import { Start } from './src/Pages/Start/Index';
-import {ThemeProvider} from 'styled-components';
-import theme from './src/global/styles/themes';
-import {
-  useFonts,
-  Roboto_400Regular,
-  Roboto_500Medium,
-  Roboto_700Bold
-} from '@expo-google-fonts/roboto';
+import { useFonts } from 'expo-font';
+import { Rajdhani_500Medium, Rajdhani_700Bold } from '@expo-google-fonts/rajdhani';
+import { Roboto_400Regular, Roboto_500Medium, Roboto_700Bold } from '@expo-google-fonts/roboto';
 import AppLoading from 'expo-app-loading';
 
+import { StatusBar } from 'react-native';
+import { Router } from './src/routes';
+
 export default function App() {
-  const [ fontsLoaded ] = useFonts({
+  const [fontsLoaded] = useFonts({
     Roboto_400Regular,
     Roboto_500Medium,
     Roboto_700Bold,
+    Rajdhani_500Medium, 
+    Rajdhani_700Bold
   });
-  if(!fontsLoaded){
+  if (!fontsLoaded) {
     return <AppLoading />
   }
   return (
-    <ThemeProvider theme={theme}>
-      <Start /> 
-    </ThemeProvider>
+    <>
+      <StatusBar backgroundColor='transparent' translucent barStyle='dark-content'/>
+      <Router />
+    </>
   )
 }
