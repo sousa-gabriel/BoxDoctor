@@ -38,17 +38,14 @@ export function CreateUser() {
     function OpenModal() {
         setOpenModal(true);
     }
-    function teste(){
-        console.log('oiii')
-        navigation.navigate('Home')
-    }
+
     function CloseModal() {
         setOpenModal(false);
     }
     function Validate(data: data) {
-        if (data.name.length > 0) {
-            if (data.email.length > 0) {
-                if (data.key.length > 0) {
+        if (data.length > 0) {
+            if (data.length > 0) {
+                if (data.length > 0) {
                     { OpenModal() }
                 } else { Alert.alert('Campo senha é obrigratório'); }
             } else { Alert.alert('Campo email é obrigratório'); }

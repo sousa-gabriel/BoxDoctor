@@ -5,6 +5,7 @@ export const styles = StyleSheet.create({
     constainer: {
         flex: 1,
         marginTop: 100,
+        alignItems: 'center'
     },
     overlay:{
         flex: 1,

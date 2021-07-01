@@ -6,7 +6,7 @@ import { theme } from '../../global/styles/themes';
 
 interface Props extends TextInputProps {
   name: string;
-  icon: string;
+  icon?: string;
   mandatory?: boolean;
 }
 

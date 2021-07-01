@@ -1,28 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, FlatList, Text, TouchableOpacity } from 'react-native';
 import { styles } from './styles';
 import { Header } from '../../Components/Header';
 import { Itens } from '../../Components/Itens';
+import { ModalView } from '../../Components/ModalView';
+import { MedicinesData } from '../../Components/MedicinesData';
 
 export function Alarm() {
-    const listItens = [
-        {
-            id: '1',
-            hours: '10:00',
-            title: 'Berotec',
-            amountMedicine: '3',
-            icon: 'capsula',
-            status: 'success',
-        },
-        {
-            id: '2',
-            hours: '11:00',
-            title: 'Dorflex',
-            amountMedicine: '1',
-            icon: 'comprimido',
-            status: 'inative',
-        },
-    ]
+    const [openModal, setOpenModal] = useState(false);
+    const [data, setData] = useState({});
+    const [listItens, setlistItens] = useState([])
+
+    function OpenModal() {
+        setOpenModal(true);
+    }
+
+    function CloseModal(responseModal: {}) {
+        setOpenModal(false);
+        const dados = listItens
+        listItens.push(responseModal)
+        console.log(listItens)
+    }
 
     return (
         <View style={styles.container}>
@@ -49,10 +47,13 @@ export function Alarm() {
             <TouchableOpacity 
                 activeOpacity={0.7}
                 style={styles.add} 
-                onPress={()=>{console.log('To botao')}}
+                onPress={OpenModal}
             >
                 <Text style={styles.addText}>+</Text>
             </TouchableOpacity>
+            <ModalView closeModal={() => CloseModal('cancel')} visible={openModal}>
+                <MedicinesData DataModal={CloseModal}/>
+            </ModalView>
         </View>
     )
 }
