@@ -23,7 +23,6 @@ export function Dashboard() {
             amountMedicine: '1',
             icon: 'comprimido',
             status: 'pending',
-
         },
     ]
 

@@ -15,7 +15,7 @@ export const theme = {
         backgroundModal: 'rgba(0,0,0,0.7)',
         
     // Input Colors 
-        imput:'#D1D1D1',
+        input:'#D1D1D1',
         inputValue: '#383838',
         shadowColor: '#707070',
         

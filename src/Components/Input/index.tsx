@@ -21,7 +21,7 @@ export function Input({ name, icon, mandatory, ...rest }: Props) {
         {...rest}
         style={styles.input}
         placeholder={name}
-        placeholderTextColor={theme.colors.imput}
+        placeholderTextColor={theme.colors.input}
       />
     </View>
   );

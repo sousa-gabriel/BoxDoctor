@@ -5,11 +5,12 @@ export const styles = StyleSheet.create({
     container:{
         width: '100%',
         height: 80,
-        // marginLeft: 5,
         marginBottom: 20,
         flexDirection: 'row',
         justifyContent: 'space-around',
         alignItems: 'center',
+        borderWidth: 1,
+        borderColor: theme.colors.borderColor,
         borderBottomColor: theme.colors.sucess,
         borderBottomWidth: 5,
         backgroundColor: theme.colors.BackgroundItem,

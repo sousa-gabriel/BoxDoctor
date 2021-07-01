@@ -12,9 +12,10 @@ interface Props extends TouchableOpacityProps {
     icon: string;
     status: string;
 }
+
 export function Itens({ hours, title, amountMedicine, icon, status }: Props) {
 
-    function StatusSelector(status:string) {
+    function StatusSelector(status: string) {
         switch (status) {
             case 'success':
                 return theme.colors.sucess
@@ -22,22 +23,25 @@ export function Itens({ hours, title, amountMedicine, icon, status }: Props) {
                 return theme.colors.primary
             case 'missing':
                 return theme.colors.Loading
+            case 'inative':
+                return theme.colors.input
             default:
-            break;
+                break;
         }
     }
     return (
         <TouchableOpacity
-            style={[styles.container, {borderBottomColor:StatusSelector(status)}]}
+            style={[styles.container, { borderBottomColor: StatusSelector(status) }]}
+            activeOpacity={0.7}
         >
-            <Text style={[styles.hours, {color:StatusSelector(status)}]}>
+            <Text style={[styles.hours, { color: StatusSelector(status) }]}>
                 {hours}
             </Text>
             <View>
-                <Text style={[styles.title,{color:StatusSelector(status)}]}>
+                <Text style={[styles.title, { color: StatusSelector(status) }]}>
                     {title}
                 </Text>
-                <Text style={[styles.subTitle, {color: StatusSelector(status)}]}>
+                <Text style={[styles.subTitle, { color: StatusSelector(status) }]}>
                     {amountMedicine} {icon === 'capsula' ? 'Capsulas' : 'Comprimido'}
                 </Text>
             </View>
