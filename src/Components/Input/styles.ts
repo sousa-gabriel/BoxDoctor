@@ -1,23 +1,30 @@
-import styled from 'styled-components/native';
+import { StyleSheet } from "react-native";
+import { theme } from "../../global/styles/themes";
 
-export const Input = styled.TextInput`
-  height: 100%;
-  width: 90%;
-  margin-left: 10px;
-`;
-
-export const ContainerImput = styled.View`
-  height: 50px;
-  width: 80%;
-  padding-left: 10px;
-  border-radius: 5px;
-  border-width: 1px;
-  margin-left: 10%;
-  margin-top: 5%;
-  border-width: 1px;
-
-  align-items: center;
-  flex-direction: row;
-  background-color: #FFF;
-  border-color: #D1D1D1;
-`;
+export const styles = StyleSheet.create({
+  container:{
+    height: 50,
+    width: '100%',        
+    marginVertical: 15,
+    paddingLeft: 10,
+    borderRadius: 5,
+    borderWidth: 1,
+    alignItems: 'center',
+    flexDirection: 'row',
+    borderColor: theme.colors.borderColor,
+    backgroundColor: theme.colors.background,
+    shadowColor: theme.colors.shadowColor,
+    shadowOpacity: 0.5,
+    shadowOffset: { width: 1, height: 1 },
+    shadowRadius: 2,
+    elevation: 10,
+  },
+  input:{
+    fontFamily: theme.fonts.TextImput,
+    color: theme.colors.inputValue,
+    fontSize: 17,
+    height: '100%',
+    width: '100%',    
+    marginLeft: 10,
+  }
+});

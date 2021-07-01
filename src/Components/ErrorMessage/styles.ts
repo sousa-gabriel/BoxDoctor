@@ -6,5 +6,5 @@ export const TextError = styled(Text)`
     margin-left: 10%;
     margin-top: 5px;
     color: ${({theme})=>theme.colors.text};
-    font-family: ${({theme})=>theme.fonts.regular};
+    font-family: ${({theme})=>theme.fonts.bold};
 `;

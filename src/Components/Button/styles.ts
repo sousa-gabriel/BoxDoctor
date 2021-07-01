@@ -1,24 +1,28 @@
-import styled,{css} from 'styled-components/native';
-import {RectButton} from 'react-native-gesture-handler'
+import { StyleSheet } from 'react-native';
+import { theme } from '../../global/styles/themes';
 
-interface ButtonProps{
-    ContensIcon: boolean;
-}
-export const ContainerButton = styled(RectButton)<ButtonProps>`
-   width: 80%;
-   height: 50px;
-   margin-left: 10%;
-   padding-left: 10px;
-   margin-top: 5%;
-   border-radius:5px;
-   justify-content: flex-start;
-   align-items: center;
-   flex-direction: row;
-`;
-
-export const ButtonText = styled.Text<ButtonProps>`
-    font-size: 18px;
-    font-family: ${({theme})=>theme.fonts.regular};
-    
-    ${(props) => props.ContensIcon && css`margin: 10px`}
-`;
+export const styles = StyleSheet.create({
+    container: {
+        height: 50,
+        width: '100%',
+        paddingLeft: 10,
+        borderRadius: 10,
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'row',
+        marginVertical: 15,
+        backgroundColor: theme.colors.background,
+        shadowColor: theme.colors.shadowColor,
+        shadowOpacity: 0.5,
+        shadowOffset: { width: 1, height: 1 },
+        shadowRadius: 2,
+        elevation: 10,
+    },
+    icon:{
+        marginRight: 10,
+    },
+    title: {
+        fontFamily: theme.fonts.TextButton,
+        fontSize: 17,
+    },
+})
