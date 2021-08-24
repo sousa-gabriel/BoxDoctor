@@ -1,35 +1,39 @@
-import { StyleSheet } from "react-native";
+import styled from "styled-components/native";
+import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
+import { Platform } from "react-native";
 
-export const styles = StyleSheet.create({
-    container: {
-        width: '100%',
-        position: "absolute",
-        top: '10%',
-        flexDirection: 'row',
-    },
-    imageBox: {
-        width: '50%',
-        left: 0,
-        position: "absolute",
-        resizeMode:'contain',
-    },
-    imagePlus: {
-        width: '60%',
-        right: '0%',
-        position: "absolute",
-        resizeMode: 'contain'
-    },
-    doctor:{
-        position: "absolute",
-        bottom: 0,
-        height: '60%',
-        width: '100%',
-    },
-    imageDoctor:{
-        resizeMode: 'contain',
-        position: "absolute",
-        bottom: -10,
-        height: 258,
-        width: 244,
-    },
-});
+export const ContainerBox = styled.View`
+    width: 100%;
+    position: absolute;
+    top: ${RFPercentage(10)}px;
+    flex-direction: row;
+`;
+
+export const Box = styled.Image`
+    width: ${RFValue(150)}px;
+    height: ${RFValue(200)}px;
+    left: ${RFValue(0)}px;
+    position: absolute;
+`;
+
+export const Plus = styled.Image`
+    width: ${RFValue(200)}px;
+    height: ${RFValue(200)}px;
+    right: ${Platform.OS === 'ios' ? RFValue(10) : RFValue(60)}px;
+    position: absolute;
+`;
+
+export const ContainerDoctors = styled.View`
+    position: absolute;
+    bottom: ${RFValue(0)}px;
+    height: ${RFPercentage(60)}px;
+    width: ${RFPercentage(100)}px;;
+`;
+
+export const Doctors = styled.Image`
+    position: absolute;
+    left: ${RFValue(3)}px;
+    bottom: ${RFValue(0)}px;
+    height: ${RFValue(208)}px;
+    width: ${RFValue(214)}px;
+`;

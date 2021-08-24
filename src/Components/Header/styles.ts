@@ -1,21 +1,18 @@
-import { StyleSheet } from "react-native";
+import { RFValue } from "react-native-responsive-fontsize";
+import styled from "styled-components/native";
 import { theme } from "../../global/styles/themes";
 
-export const styles = StyleSheet.create({
-    container:{
-        width: '100%',
-        alignItems: 'center',
-        flexDirection: 'row',
-        paddingHorizontal: 20,
-        marginTop: 20,
-    },
-    icon:{
-        marginRight: 20,
-        color: theme.colors.title,
-    },
-    title:{
-        fontFamily: theme.fonts.Title,
-        color: theme.colors.title,
-        fontSize: 25,
-    }
-})
+export const Container = styled.View`
+    width: 100%;
+    align-items: center;
+    flex-direction: row;
+    padding-left: ${RFValue(20)}px;
+    padding-right: ${RFValue(20)}px;
+    margin-top: ${RFValue(20)}px;
+`;
+
+export const Title = styled.Text`
+    font-family: ${theme.fonts.Title};
+    color: ${theme.colors.title};
+    font-size: ${RFValue(25)}px;
+`;

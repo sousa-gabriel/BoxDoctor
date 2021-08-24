@@ -1,25 +1,34 @@
-import React, { ReactNode } from 'react';
-import { ScrollView, Image, View } from 'react-native';
-import { styles } from './styles';
+import React from 'react';
+import { Container, Content } from './styles';
+import { Button } from '../../Components/Button';
+import { useNavigation } from '@react-navigation/native';
+import { theme } from '../../global/styles/themes';
 
-import LogoImg from '../../global/Image/Logo.png'
-interface Props {
-    children: ReactNode;
-}
 
-export function ContentLogin({ children }: Props) {
+export function ContentLogin() {
+    const navigation = useNavigation();
+
     return (
-        <View style={styles.container}>
-            <ScrollView 
-                style={styles.content} 
-                contentContainerStyle={{paddingBottom: 40}}             
-                showsVerticalScrollIndicator={false}
-            >
-                <View style={styles.containerImage}>
-                    <Image source={LogoImg} style={styles.image} />
-                </View>
-                {children}
-            </ScrollView>
-        </View>
+        <Content
+            contentContainerStyle={{ paddingBottom: 40 }}
+            showsVerticalScrollIndicator={false}
+        >
+            <Container >
+                <Button
+                    color='#3B5998'
+                    icon='facebook-square'
+                    title='Entrar com o Facebook'
+                    colorIcon='#FFF'
+                    onPress={() => { navigation.navigate('Home') }}
+                />
+                <Button
+                    color='#E9500E'
+                    icon='google-plus-square'
+                    title='Entrar com o Google'
+                    colorIcon='#FFF'
+                    onPress={() => { navigation.navigate('Home') }}
+                />
+            </Container>
+        </Content>
     )
 }

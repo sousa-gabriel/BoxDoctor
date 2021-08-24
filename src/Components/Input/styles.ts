@@ -20,7 +20,7 @@ export const styles = StyleSheet.create({
     elevation: 10,
   },
   input:{
-    fontFamily: theme.fonts.TextImput,
+    fontFamily: theme.fonts.TextInput,
     color: theme.colors.inputValue,
     fontSize: 17,
     height: '100%',

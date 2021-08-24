@@ -8,12 +8,17 @@ export const styles = StyleSheet.create({
         height:'auto',
         backgroundColor:'#fff',
         padding:20,
-        marginTop: '40%'
     },
     title:{
         marginVertical:20,
         fontFamily: theme.fonts.Title,
         color: theme.colors.primary,
         fontSize: 20,
-    }
+    },
+    overlay:{
+        flex: 1,
+        backgroundColor: theme.colors.backgroundModal,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
 })

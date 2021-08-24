@@ -4,26 +4,33 @@ import { TouchableOpacity, TouchableOpacityProps, Text, Image, View } from 'reac
 import { theme } from '../../global/styles/themes';
 import Capsula from '../../global/Image/Pill.png';
 import Tablete from '../../global/Image/Tablet.png';
+import { useState } from 'react';
 
-interface Props extends TouchableOpacityProps {
+export interface ItemsProps extends TouchableOpacityProps {
+    id?: string;
     hours: string;
     title: string;
     amountMedicine: string;
-    icon: string;
     status: string;
+    icon?: string;
+    active?: boolean;
 }
 
-export function Itens({ hours, title, amountMedicine, icon, status }: Props) {
+export function Items({ hours, title, amountMedicine, icon, status, active, ...rest }: ItemsProps) {
+    const [statusActive, SetStatusActive] = useState(false);
+    function handleSetStatusActive() {
+        SetStatusActive(!statusActive)
+    }
 
     function StatusSelector(status: string) {
         switch (status) {
             case 'success':
-                return theme.colors.sucess
+                return theme.colors.success
             case 'pending':
                 return theme.colors.primary
             case 'missing':
                 return theme.colors.Loading
-            case 'inative':
+            case 'inactive':
                 return theme.colors.input
             default:
                 break;
@@ -33,6 +40,7 @@ export function Itens({ hours, title, amountMedicine, icon, status }: Props) {
         <TouchableOpacity
             style={[styles.container, { borderBottomColor: StatusSelector(status) }]}
             activeOpacity={0.7}
+            {...rest}
         >
             <Text style={[styles.hours, { color: StatusSelector(status) }]}>
                 {hours}
@@ -45,7 +53,25 @@ export function Itens({ hours, title, amountMedicine, icon, status }: Props) {
                     {amountMedicine} {icon === 'capsula' ? 'Capsulas' : 'Comprimido'}
                 </Text>
             </View>
-            <Image source={icon === 'capsula' ? Capsula : Tablete} style={styles.icon} />
-        </TouchableOpacity>
+            {
+                icon &&
+                <Image source={icon === 'capsula' ? Capsula : Tablete} style={styles.icon} />
+            }
+            {
+                active &&
+                <TouchableOpacity onPress={handleSetStatusActive} style={[styles.Power,
+                { borderColor: statusActive ? theme.colors.success : theme.colors.borderColor,
+                 alignItems: statusActive ? 'flex-end' : 'flex-start'}
+                ]} >
+                    <View
+                        style={[styles.PowerSelector,
+                        { backgroundColor: statusActive 
+                            ? theme.colors.success 
+                            : theme.colors.borderColor}
+                        ]} />
+                </TouchableOpacity>
+            }
+
+        </TouchableOpacity >
     )
 }

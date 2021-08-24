@@ -1,13 +1,14 @@
 import React from 'react';
-import { View, FlatList } from 'react-native';
-import { styles } from './styles';
+import { Container, ListItems } from './styles';
 import { Header } from '../../Components/Header';
 import { ContentData } from '../../Components/CotentData';
-import { Itens } from '../../Components/Itens';
+import { Items } from '../../Components/Items';
+import { useNavigation } from '@react-navigation/native';
 
 export function Dashboard() {
+    const navigation = useNavigation();
 
-    const listItens = [
+    const listItems = [
         {
             id: '1',
             hours: '10:00',
@@ -27,26 +28,27 @@ export function Dashboard() {
     ]
 
     return (
-        <View style={styles.container}>
+        <Container >
             <Header title='Notas do dia' />
             <ContentData>
-                <FlatList
-                    data={listItens}
+                <ListItems
+                    data={listItems}
                     keyExtractor={item => item.id}
                     showsVerticalScrollIndicator={false}
                     showsHorizontalScrollIndicator={false}
                     contentContainerStyle={{width: '90%', paddingHorizontal:5}}
                     renderItem={({ item }) => (
-                        <Itens
+                        <Items
                             hours={item.hours}  
                             title={item.title} 
                             amountMedicine={item.amountMedicine}
                             icon={item.icon}
                             status={item.status}
+                            onPress={()=>{navigation.navigate('ItensDetails')}}
                         />
                     )}
                 />
             </ContentData>
-        </View>
+        </Container>
     )
 }

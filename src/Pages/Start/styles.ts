@@ -1,47 +1,46 @@
-import { StyleSheet } from "react-native";
+import styled from "styled-components/native";
 import { theme } from "../../global/styles/themes";
+import { RectButton } from 'react-native-gesture-handler';
+import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 
-export const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: theme.colors.background,
-    },
-    welcone: {
-        backgroundColor: '#fff',
-        width: 180,
-        height: 100,
-        alignItems: 'center',
-        justifyContent: 'space-around',
-        borderWidth: 1,
-        borderColor: theme.colors.borderColor,
-        borderRadius: 30,
-        borderBottomLeftRadius: 0,
-        position: "absolute",
-        bottom: 230,
-        left: 150,
-        shadowColor: theme.colors.shadowColor,
-        shadowOpacity: 0.5,
-        shadowOffset: { width: 5, height: 2 },
-        shadowRadius: 5,
-        elevation: 10,
+export const Container = styled.View`
+    flex: 1;
+    background-color: ${theme.colors.background};
+`;
 
-    },
-    welconeText: {
-        fontFamily: theme.fonts.Text500,
-        textAlign: 'center',
-        fontSize: 13,
-        color: theme.colors.title,
-    },
-    buttonStart: {
-        width: 105,
-        height: 24,
-        borderRadius: 5,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: theme.colors.sucess,
-    },
-    buttonStartText: {
-        fontFamily: theme.fonts.TextButton,
-        color: theme.colors.button,
-    },
-})
+export const Content = styled.View`
+    background-color: #FFFFFF;
+    width: ${RFValue(180)}px;
+    height: ${RFValue(100)}px;
+    align-items: center;
+    justify-content: center;
+    border-width: ${RFValue(1)}px;
+    border-color: ${theme.colors.borderColor};
+    border-radius: ${RFValue(30)}px;
+    border-bottom-left-radius: 0;
+    bottom: ${RFPercentage(30)}px;
+    left: ${RFValue(140)}px;
+    position: absolute;
+`;
+
+export const Title = styled.Text`
+    font-family: ${theme.fonts.Text500};
+    text-align: center;
+    font-size: ${RFValue(13)}px;
+    color: ${theme.colors.title};
+`;
+
+export const ButtonStart = styled(RectButton)`
+    width: ${RFValue(105)}px;
+    height: ${RFValue(24)}px;
+    border-radius: ${RFValue(5)}px;
+    margin-top: ${RFValue(10)}px;
+    align-items: center;
+    justify-content: center;
+    background-color: ${theme.colors.success};
+`;
+
+export const ButtonStartText = styled.Text`
+    font-family: ${theme.fonts.TextButton};
+    color: ${theme.colors.button};
+`;

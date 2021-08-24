@@ -12,7 +12,11 @@ export function Home() {
     }
     return (
         <>
-            {active === 'Calendar' ? <Dashboard /> : active === 'Alarm' ? <Alarm /> : <BoxDoctor />}
+            {
+                active === 'Calendar' ? <Dashboard /> 
+                : active === 'Alarm' ? <Alarm /> 
+                : <BoxDoctor />
+            }
             <Footer Active={handleActive} />
         </>
     )

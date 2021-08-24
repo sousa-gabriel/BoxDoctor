@@ -5,8 +5,8 @@ import { theme } from '../global/styles/themes';
 //para auth 
 import { Start } from '../Pages/Start';
 import { Login } from '../Pages/Login';
-import { CreateUser } from '../Pages/CreateUser';
 import { Home } from '../Pages/Home';
+// import { ItemsDetails } from '../Pages/ItemsDetails';
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -19,7 +19,7 @@ export function AuthRoutes() {
             <Screen name="Start" component={Start} />
             <Screen name="Home" component={Home} />
             <Screen name="Login" component={Login} />
-            <Screen name="CreateUser" component={CreateUser} />
+            {/* <Screen name="ItemsDetails" component={ItemsDetails} /> */}
         </Navigator>
     )
 }

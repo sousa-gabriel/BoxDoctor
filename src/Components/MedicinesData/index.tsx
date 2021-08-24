@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
-import { styles } from './styles';
-import { View, Text } from 'react-native';
+import { Text, View } from 'react-native';
 import { Input } from '../Input';
 import { Button } from '../Button';
 import { theme } from '../../global/styles/themes';
 import { ModalView } from '../../Components/ModalView';
 import { ButtonSelector } from '../../Components/ButtonSelector';
 import { SwitchMedicines } from '../SwitchMedicines';
-import { SmallImput } from '../../Components/SmallImput';
+import { SmallInput } from '../SmallInput';
+import { Header } from '../Header';
+import uuid from 'react-native-uuid';
+import { ContainerModal, Content, Title, ContainerAlarm, ContentAlarm, TitleAlarm } from './styles';
 
 interface Props {
     DataModal: (Data: {}) => void;
@@ -20,8 +22,6 @@ export function MedicinesData({ DataModal }: Props) {
     const [quantityMedicine, setQuantityMedicine] = useState('');
     const [horas, setHoras] = useState('');
     const [mintos, setMinutos] = useState('');
-    const [dia, setDia] = useState('');
-    const [mes, setMes] = useState('');
 
     function OpenModal() {
         setOpenModal(true);
@@ -35,65 +35,61 @@ export function MedicinesData({ DataModal }: Props) {
     function handleData() {
         const hora = `${horas}:${mintos}`
         const data = {
-            id: '1',
+            id: uuid.v4(),
             hours: hora,
             title: nameMedicine,
             amountMedicine: quantityMedicine,
             icon: medicineSelected,
-            status: 'success',
+            status: 'inative',
         }
 
         DataModal(data)
     }
 
     return (
-        <View style={styles.container}>
-            <Text style={styles.title}>Dados do Medicamentos:</Text>
-            <Input 
-                name='Nome do medicamento' 
-                onChangeText={setNameMedicine} 
-            />
-            <Input 
-                name='Quantidade de medicamentos' 
-                onChangeText={setQuantityMedicine} 
-                keyboardType={'numeric'} 
-            />
-            <ButtonSelector
-                title={medicineSelected}
-                color={theme.colors.BackgroundItem}
-                onPress={OpenModal}
-                icon
-            />
-            <View style={styles.field}>
-                <View>
-                    <Text style={[styles.label, { marginBottom: 12 }]}>
-                        Die e mês
-                    </Text>
-                    <View style={styles.column}>
-                        <SmallImput maxLength={2}  onChangeText={setDia} />
-                        <Text style={styles.divider}>
-                            /
-                        </Text>
-                        <SmallImput maxLength={2} onChangeText={setMes}/>
+        <>
+            <ContainerModal>
+                <Header title="Cadastro de medicamentos" />
+                <Content >
+                    <View style={{ marginHorizontal: '10%', paddingBottom: 20 }}>
+                        <Title >Dados do Medicamentos:</Title>
+                        <Input
+                            name='Nome do medicamento'
+                            onChangeText={setNameMedicine}
+                        />
+                        <Input
+                            name='Quantidade de medicamentos'
+                            onChangeText={setQuantityMedicine}
+                            keyboardType={'numeric'}
+                        />
+
+                        <ButtonSelector
+                            title={medicineSelected}
+                            color={theme.colors.BackgroundItem}
+                            onPress={OpenModal}
+                            icon
+                        />
+                        <ContainerAlarm >
+                            <TitleAlarm >
+                                Hora e minuto
+                            </TitleAlarm>
+                            <ContentAlarm >
+                                <SmallInput maxLength={2} onChangeText={setHoras} />
+                                <Text> : </Text>
+                                <SmallInput maxLength={2} onChangeText={setMinutos} />
+                            </ContentAlarm>
+                        </ContainerAlarm>
+                        <Button
+                            title="Confirmar"
+                            color={theme.colors.buttonBackground}
+                            onPress={handleData}
+                        />
+                        <ModalView closeModal={() => CloseModal(medicineSelected)} visible={openModal}>
+                            <SwitchMedicines CloseModal={CloseModal} />
+                        </ModalView>
                     </View>
-                </View>
-                <View>
-                    <Text style={[styles.label, { marginBottom: 12 }]}>
-                        Hora e minuto
-                    </Text>
-                    <View style={styles.column}>
-                        <SmallImput maxLength={2} onChangeText={setHoras}/>
-                        <Text style={styles.divider}>
-                            :
-                        </Text>
-                        <SmallImput maxLength={2} onChangeText={setMinutos}/>
-                    </View>
-                </View>
-            </View>
-            <Button title="Confirmar" color={theme.colors.buttonBackground} onPress={handleData} />
-            <ModalView closeModal={() => CloseModal(medicineSelected)} visible={openModal}>
-                <SwitchMedicines CloseModal={CloseModal} />
-            </ModalView>
-        </View>
+                </Content>
+            </ContainerModal>
+        </>
     )
 }

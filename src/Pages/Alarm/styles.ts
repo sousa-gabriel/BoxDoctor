@@ -37,5 +37,9 @@ export const styles = StyleSheet.create({
         fontFamily: theme.fonts.Text500,
         color: theme.colors.button,
         fontSize: 45,
+    },
+    list:{
+        width: '100%', 
+        paddingHorizontal: 5,
     }
 })

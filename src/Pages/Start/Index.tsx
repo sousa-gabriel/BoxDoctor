@@ -1,30 +1,26 @@
 import React from 'react';
 import { BackgroundLogin } from '../../Components/BackgroundLogin';
-import { RectButton } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import { HeaderLogin } from '../../Components/HeaderLogin';
-import { View, Text } from 'react-native';
-import { styles } from './styles';
+import {Container, Content, Title, ButtonStart,ButtonStartText  } from './styles';
+import { theme } from '../../global/styles/themes';
 
 export function Start() {
     const navigation = useNavigation();
     return (
-        <View style={styles.container}>
+        <Container >
             <HeaderLogin title="BoxDoctor" />
             <BackgroundLogin />
-            <View style={styles.welcone}>
-                <Text style={styles.welconeText}>
+            <Content style={theme.colors.shadow}>
+                <Title>
                     Bem vindo!!{'\n'}ao{'\n'}BoxDoctor
-                </Text>
-                <RectButton 
-                    style={styles.buttonStart} 
-                    onPress={() => { navigation.navigate('Login') }}
-                >
-                    <Text style={styles.buttonStartText}>
+                </Title>
+                <ButtonStart onPress={() => { navigation.navigate('Login') }}>
+                    <ButtonStartText >
                         Iniciar
-                    </Text>
-                </RectButton>
-            </View>
-        </View>
+                    </ButtonStartText>
+                </ButtonStart>
+            </Content>
+        </Container>
     )
 }

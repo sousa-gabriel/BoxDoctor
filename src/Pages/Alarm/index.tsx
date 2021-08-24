@@ -2,14 +2,17 @@ import React, { useState } from 'react';
 import { View, FlatList, Text, TouchableOpacity } from 'react-native';
 import { styles } from './styles';
 import { Header } from '../../Components/Header';
-import { Itens } from '../../Components/Itens';
+import { Items } from '../../Components/Items';
 import { ModalView } from '../../Components/ModalView';
 import { MedicinesData } from '../../Components/MedicinesData';
+import { ItemsProps } from '../../Components/Items';
+import { useNavigation } from '@react-navigation/native';
 
 export function Alarm() {
+    const navigation = useNavigation();
     const [openModal, setOpenModal] = useState(false);
     const [data, setData] = useState({});
-    const [listItens, setlistItens] = useState([])
+    const [listItems, setlistItems] = useState<ItemsProps[]>([])
 
     function OpenModal() {
         setOpenModal(true);
@@ -17,33 +20,38 @@ export function Alarm() {
 
     function CloseModal(responseModal: {}) {
         setOpenModal(false);
-        const dados = listItens
-        listItens.push(responseModal)
-        console.log(listItens)
+        const dados = listItems
+        listItems.push(responseModal)
+        console.log(listItems)
+    }
+
+    function handleAlarmItems(ItemSelected:ItemsProps) {
+        console.log(ItemSelected)
     }
 
     return (
         <View style={styles.container}>
-            <Header title='Notas do dia' />
-            <Text style={styles.subtitle}> Lista de Alarmes</Text>
+            <Header title='Alarmes Adicionados' />
+             <Text style={styles.subtitle}> Lista de Alarmes</Text>
             <View style={styles.content}>
                 <FlatList
-                    data={listItens}
+                    data={listItems}
                     keyExtractor={item => item.id}
                     showsVerticalScrollIndicator={false}
                     showsHorizontalScrollIndicator={false}
-                    contentContainerStyle={{ width: '100%', paddingHorizontal: 5  }}
+                    contentContainerStyle={styles.list}
                     renderItem={({ item }) => (
-                        <Itens
+                        <Items
                             hours={item.hours}
                             title={item.title}
                             amountMedicine={item.amountMedicine}
-                            icon={item.icon}
+                            active
                             status={item.status}
+                            onPress={()=>{handleAlarmItems(item)}}
                         />
                     )}
                 />
-            </View>
+            </View> 
             <TouchableOpacity 
                 activeOpacity={0.7}
                 style={styles.add} 

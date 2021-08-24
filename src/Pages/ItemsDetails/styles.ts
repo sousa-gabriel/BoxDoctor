@@ -1,8 +1,13 @@
-import { StyleSheet } from 'react-native';
-import { theme } from '../../global/styles/themes';
+import { StyleSheet } from "react-native";
+import { theme } from "../../global/styles/themes";
 
-export const styles = StyleSheet.create({
-    container: {
+export const StylesDetalhes = StyleSheet.create({
+    container:{
+        flex: 1,
+        width: '90%',
+        marginHorizontal: '5%',
+    },
+    icon:{
         height: 50,
         width: '100%',
         paddingLeft: 10,
@@ -18,15 +23,17 @@ export const styles = StyleSheet.create({
         shadowRadius: 2,
         elevation: 10,
     },
-    icon:{
-        marginRight: 10,
-        position: 'absolute',
-        right: 15,
-    },
-    title: {
+    title:{
         fontFamily: theme.fonts.TextInput,
         fontSize: 20,
         marginLeft: 10,
-        color: theme.colors.input,
+        color: theme.colors.inputValue,
     },
+    containerIcons:{
+        width: '100%', 
+        flexDirection:'row', 
+        justifyContent: 'space-between', 
+        marginTop: 20,
+
+    }
 })

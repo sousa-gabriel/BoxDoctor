@@ -1,58 +1,41 @@
-import { StyleSheet } from "react-native";
+import styled from "styled-components/native";
 import { theme } from "../../global/styles/themes";
+import { RFValue } from "react-native-responsive-fontsize";
 
-export const styles = StyleSheet.create({
-    container: {
-        width: '80%',
-        height: 'auto',
-        paddingHorizontal: 20,
-        paddingVertical: '10%',
-        backgroundColor: theme.colors.BackgroundItem,
-        borderRadius: 20,
-        borderWidth: 2,
-        borderColor: theme.colors.primary,
-    },
-    title: {
-        marginVertical: 20,
-        fontFamily: theme.fonts.Title,
-        color: theme.colors.primary,
-        fontSize: 20,
-    },
-    AlarmContent: {
-        width: '75%',
-        marginHorizontal: '23%',
-        justifyContent: 'center',
-        flexDirection: 'row'
-    },
-    TextAlarm: {
-        fontFamily: theme.fonts.Title,
-        color: theme.colors.primary,
-        fontSize: 20,
-    },
-    AlarmData: {
-        width: 50,
-        flexDirection: 'row',
-        alignItems: "center",
-    },
-    field: {
-        width: '100%',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        marginTop: 30,
-    },
-    column: {
-        flexDirection: 'row',
-        alignItems: 'center',
-    },
-    divider: {
-        marginRight: 4,
-        fontSize: 20,
-        fontFamily: theme.fonts.Title,
-        color: theme.colors.primary,
-    },
-    label: {
-        fontSize: 18,
-        fontFamily: theme.fonts.Title,
-        color: theme.colors.primary,
-    }
-})
+export const ContainerModal = styled.View`
+    flex: 1;
+    background-color: ${theme.colors.BackgroundItem};
+    align-items: center;
+    justify-content: center;
+    margin-top: 10%;
+`;
+
+export const Content = styled.ScrollView`
+    flex: 1;
+    background-color: ${theme.colors.BackgroundItem};
+`;
+
+export const Title = styled.Text`
+    font-family: ${theme.fonts.Title};
+    color: ${theme.colors.primary};
+    font-size: ${RFValue(20)}px;
+    margin-top: ${RFValue(20)}px;
+    margin-bottom: ${RFValue(20)}px;
+`;
+export const ContainerAlarm = styled.View`
+    width: 80%;
+    justify-content: center;
+    margin-top: ${RFValue(30)}px;
+`;
+
+export const ContentAlarm = styled.View`
+    flex-direction: row;
+    align-items: center;
+    margin-vertical: ${RFValue(20)}px;
+`;
+
+export const TitleAlarm= styled.Text`
+    font-size: ${RFValue(20)}px;
+    font-family: ${theme.fonts.Title};
+    color: ${theme.colors.primary};
+`;
