@@ -12,7 +12,7 @@ interface Props extends TouchableOpacityProps {
     colorText?: string;
 }
 
-export function Button({ color, icon, title, colorIcon, colorText, ...rest }: Props) {
+export function Button({ color, icon , title, colorIcon, colorText, ...rest }: Props) {
     return (
         <ButtonContainer style={theme.colors.shadow} activeOpacity={0.7} color={color} {...rest} >
             {

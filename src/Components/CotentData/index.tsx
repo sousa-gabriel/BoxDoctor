@@ -1,6 +1,5 @@
 import React, { ReactNode } from 'react';
-import { View, Image } from 'react-native';
-import { styles } from './styles';
+import { Container } from './styles';
 
 interface Props {
     children: ReactNode;
@@ -8,8 +7,8 @@ interface Props {
 
 export function ContentData({ children }: Props) {
     return (
-        <View style={styles.container}>
+        <Container >
             {children}
-        </View>
+        </Container>
     )
 }

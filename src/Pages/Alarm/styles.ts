@@ -4,6 +4,7 @@ import { theme } from "../../global/styles/themes";
 export const styles = StyleSheet.create({
     container:{
         flex: 1,
+        backgroundColor: theme.colors.background,
         width: '100%',
     },
     subtitle:{
@@ -22,7 +23,7 @@ export const styles = StyleSheet.create({
         height: 60,
         borderRadius: 30,
         position: "absolute",
-        bottom: 80,
+        bottom: 10,
         right: 10,
         justifyContent: 'center',
         alignItems: 'center',

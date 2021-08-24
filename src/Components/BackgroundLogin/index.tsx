@@ -1,5 +1,11 @@
 import React from 'react';
-import {ContainerBox, Box, Plus, ContainerDoctors, Doctors} from './styles'
+import {
+    ContainerBox, 
+    Box, 
+    Plus, 
+    ContainerDoctors, 
+    Doctors
+} from './styles'
 
 import BoxImg from '../../global/Image/Box.png';
 import PlusImg from '../../global/Image/Plus.png';

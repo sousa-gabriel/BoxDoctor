@@ -1,10 +1,8 @@
-import { StyleSheet } from "react-native";
+import styled from "styled-components/native";
+import { theme } from "../../global/styles/themes";
 
-export const styles = StyleSheet.create({
-    container:{
-        flex: 1,
-        width: '100%',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-})
+export const Container = styled.View`
+    flex: 1;
+    width: 100%;
+    background-color: ${theme.colors.background};
+`;

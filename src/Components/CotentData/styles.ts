@@ -1,23 +1,19 @@
-import { StyleSheet } from "react-native";
+import styled from "styled-components/native";
+import { RFValue } from "react-native-responsive-fontsize";
 import { theme } from "../../global/styles/themes";
 
-export const styles = StyleSheet.create({
-    container:{
-        width: '80%',
-        marginTop: 20,
-        paddingHorizontal:20,
-        marginLeft: '10%',
-        height: '78%',
-        backgroundColor:theme.colors.contentData,
-        alignItems: 'center',
-        paddingTop: 20,
-        borderWidth: 1,
-        borderRadius: 20,
-        borderColor:theme.colors.primary,
-        shadowColor: theme.colors.shadowColor,
-        shadowOpacity: 0.5,
-        shadowOffset: { width: 5, height: 3 },
-        shadowRadius: 2,
-        elevation: 10,
-    }
-})
+
+export const Container = styled.View`
+    height: 78%;
+    width: 80%;
+    margin-top: ${RFValue(20)}px;
+    padding-left: ${RFValue(20)}px;
+    padding-right: ${RFValue(20)}px;
+    margin-left: 10%;
+    background-color: ${theme.colors.contentData};
+    align-items: center;
+    padding-top: ${RFValue(20)}px;
+    border-width: ${RFValue(1)}px;
+    border-radius: ${RFValue(20)}px;
+    border-color: ${theme.colors.primary};
+`;

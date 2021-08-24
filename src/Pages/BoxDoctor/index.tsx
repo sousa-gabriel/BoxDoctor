@@ -1,11 +1,11 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-import { styles } from './styles';
+import { Header } from '../../Components/Header';
+import { Container } from './styles';
 
 export function BoxDoctor() {
     return (
-        <View style={styles.container}>
-            <Text>BoxDoctor</Text>
-        </View>
+        <Container >
+            <Header title='Box Doctor' />
+        </Container>
     )
 }

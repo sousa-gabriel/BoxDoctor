@@ -9,7 +9,18 @@ import { SwitchMedicines } from '../SwitchMedicines';
 import { SmallInput } from '../SmallInput';
 import { Header } from '../Header';
 import uuid from 'react-native-uuid';
-import { ContainerModal, Content, Title, ContainerAlarm, ContentAlarm, TitleAlarm } from './styles';
+import {
+    ContainerModal,
+    Content,
+    Title,
+    ContainerAlarm,
+    ContentAlarm,
+    TitleAlarm
+} from './styles';
+import { RFValue } from 'react-native-responsive-fontsize';
+
+// Ajustar o cancelar para nao salvar um item 
+// Ajustar para nao poder salvar sem preencher todos os dados
 
 interface Props {
     DataModal: (Data: {}) => void;
@@ -65,7 +76,6 @@ export function MedicinesData({ DataModal }: Props) {
 
                         <ButtonSelector
                             title={medicineSelected}
-                            color={theme.colors.BackgroundItem}
                             onPress={OpenModal}
                             icon
                         />
@@ -84,7 +94,17 @@ export function MedicinesData({ DataModal }: Props) {
                             color={theme.colors.buttonBackground}
                             onPress={handleData}
                         />
-                        <ModalView closeModal={() => CloseModal(medicineSelected)} visible={openModal}>
+                        <View style={{marginTop:RFValue(20)}}/>
+                        <Button
+                            title="Cancelar"
+                            color={theme.colors.attention}
+                            onPress={handleData}
+                        />
+
+                        <ModalView
+                            closeModal={() => CloseModal(medicineSelected)}
+                            visible={openModal}
+                        >
                             <SwitchMedicines CloseModal={CloseModal} />
                         </ModalView>
                     </View>

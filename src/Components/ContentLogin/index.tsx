@@ -2,7 +2,6 @@ import React from 'react';
 import { Container, Content } from './styles';
 import { Button } from '../../Components/Button';
 import { useNavigation } from '@react-navigation/native';
-import { theme } from '../../global/styles/themes';
 
 
 export function ContentLogin() {
@@ -19,14 +18,14 @@ export function ContentLogin() {
                     icon='facebook-square'
                     title='Entrar com o Facebook'
                     colorIcon='#FFF'
-                    onPress={() => { navigation.navigate('Home') }}
+                    onPress={() => { navigation.navigate('TabBarRoutes') }}
                 />
                 <Button
                     color='#E9500E'
                     icon='google-plus-square'
                     title='Entrar com o Google'
                     colorIcon='#FFF'
-                    onPress={() => { navigation.navigate('Home') }}
+                    onPress={() => { navigation.navigate('TabBarRoutes') }}
                 />
             </Container>
         </Content>

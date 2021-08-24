@@ -37,7 +37,7 @@ export function ItemsDetails() {
                 { text: "Cancel", onPress: () => console.log("Cancel Pressed") },
                 { text: "Excluir", onPress: () => { 
                     Alert.alert('Item excluido com sucesso'),
-                    navigation.navigate('Home')} 
+                    navigation.navigate('Dashboard')} 
                 }
             ]
         );
@@ -90,7 +90,7 @@ export function ItemsDetails() {
                         icon='check'
                         color={theme.colors.success}
                         colorIcon={'#FFF'}
-                        onPress={() => { navigation.navigate('Home') }}
+                        onPress={() => { navigation.navigate('Dashboard') }}
                     />
                     <SmallButton
                         icon='trash'

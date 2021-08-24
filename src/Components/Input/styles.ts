@@ -1,30 +1,26 @@
-import { StyleSheet } from "react-native";
+import { RFValue } from "react-native-responsive-fontsize";
+import styled from "styled-components/native";
 import { theme } from "../../global/styles/themes";
 
-export const styles = StyleSheet.create({
-  container:{
-    height: 50,
-    width: '100%',        
-    marginVertical: 15,
-    paddingLeft: 10,
-    borderRadius: 5,
-    borderWidth: 1,
-    alignItems: 'center',
-    flexDirection: 'row',
-    borderColor: theme.colors.borderColor,
-    backgroundColor: theme.colors.background,
-    shadowColor: theme.colors.shadowColor,
-    shadowOpacity: 0.5,
-    shadowOffset: { width: 1, height: 1 },
-    shadowRadius: 2,
-    elevation: 10,
-  },
-  input:{
-    fontFamily: theme.fonts.TextInput,
-    color: theme.colors.inputValue,
-    fontSize: 17,
-    height: '100%',
-    width: '100%',    
-    marginLeft: 10,
-  }
-});
+export const Container = styled.View`
+  height: ${RFValue(50)}px;
+  width: 100%;
+  margin-top: ${RFValue(15)}px;
+  margin-bottom: ${RFValue(15)}px;
+  padding-left: ${RFValue(10)}px;
+  border-radius: ${RFValue(5)}px;
+  border-width: ${RFValue(1)}px;
+  align-items: center;
+  flex-direction: row;
+  border-color: ${theme.colors.borderColor};
+  background-color: ${theme.colors.background};
+`;
+
+export const InputText = styled.TextInput`
+  font-family: ${theme.fonts.TextInput};
+  color: ${theme.colors.inputValue};
+  font-size: ${RFValue(17)}px;
+  height: 100%;
+  width: 100%;
+  margin-left: ${RFValue(10)}px;
+`;

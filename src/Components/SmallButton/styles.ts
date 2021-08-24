@@ -1,18 +1,12 @@
-import { StyleSheet } from 'react-native';
-import { theme } from '../../global/styles/themes';
+import styled from "styled-components/native";
+import { RFValue } from "react-native-responsive-fontsize";
+import { theme } from "../../global/styles/themes";
 
-export const styles = StyleSheet.create({
-    container: {
-        height: 60,
-        width: 100,
-        borderRadius: 10,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: theme.colors.background,
-        shadowColor: theme.colors.shadowColor,
-        shadowOpacity: 0.5,
-        shadowOffset: { width: 1, height: 1 },
-        shadowRadius: 2,
-        elevation: 10,
-    },
-})
+export const Container = styled.TouchableOpacity`
+    height: ${RFValue(60)}px;
+    width: ${RFValue(100)}px;
+    border-radius: ${RFValue(10)}px;
+    justify-content: center;
+    align-items: center;
+    background-color: ${theme.colors.background};
+`;
