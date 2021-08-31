@@ -14,12 +14,17 @@ interface Props extends TouchableOpacityProps {
 
 export function Button({ color, icon , title, colorIcon, colorText, ...rest }: Props) {
     return (
-        <ButtonContainer style={theme.colors.shadow} activeOpacity={0.7} color={color} {...rest} >
+        <ButtonContainer 
+            style={theme.colors.shadow} 
+            activeOpacity={0.7} 
+            color={color} 
+            hasIcon={!!icon}
+            {...rest} >
             {
                 !!icon &&
                 <FontAwesome name={icon} size={25} color={colorIcon} style={{ marginRight: 5 }} />
             }
-            <TitleButton color={colorText}>
+            <TitleButton colorText={colorText} hasIcon={!!icon}>
                 {title}
             </TitleButton>
         </ButtonContainer>

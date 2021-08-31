@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { View, FlatList, Text, TouchableOpacity } from 'react-native';
-import { styles } from './styles';
+import { FlatList } from 'react-native';
+import { Container, Subtitle, Content, ButtonAdd, TextButtonAdd } from './styles';
 import { Header } from '../../Components/Header';
 import { Items } from '../../Components/Items';
 import { ModalView } from '../../Components/ModalView';
 import { MedicinesData } from '../../Components/MedicinesData';
 import { ItemsProps } from '../../Components/Items';
 import { useNavigation } from '@react-navigation/native';
+import { theme } from '../../global/styles/themes';
 
 export function Alarm() {
     const navigation = useNavigation();
@@ -30,16 +31,16 @@ export function Alarm() {
     }
 
     return (
-        <View style={styles.container}>
+        <Container >
             <Header title='Alarmes Adicionados' />
-             <Text style={styles.subtitle}> Lista de Alarmes</Text>
-            <View style={styles.content}>
+             <Subtitle > Lista de Alarmes</Subtitle>
+            <Content>
                 <FlatList
                     data={listItems}
                     keyExtractor={item => item.id}
                     showsVerticalScrollIndicator={false}
                     showsHorizontalScrollIndicator={false}
-                    contentContainerStyle={styles.list}
+                    contentContainerStyle={{width:'100%', paddingHorizontal:5}}
                     renderItem={({ item }) => (
                         <Items
                             hours={item.hours}
@@ -51,17 +52,17 @@ export function Alarm() {
                         />
                     )}
                 />
-            </View> 
-            <TouchableOpacity 
+            </Content> 
+            <ButtonAdd 
                 activeOpacity={0.7}
-                style={styles.add} 
+                style={theme.colors.shadow} 
                 onPress={OpenModal}
             >
-                <Text style={styles.addText}>+</Text>
-            </TouchableOpacity>
+                <TextButtonAdd>+</TextButtonAdd>
+            </ButtonAdd>
             <ModalView closeModal={() => CloseModal('cancel')} visible={openModal}>
                 <MedicinesData DataModal={CloseModal}/>
             </ModalView>
-        </View>
+        </Container>
     )
 }

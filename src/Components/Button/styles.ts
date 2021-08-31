@@ -1,25 +1,33 @@
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 import { theme } from '../../global/styles/themes';
 import { RFValue } from 'react-native-responsive-fontsize';
 
-interface Button{
+interface Button {
     color: string;
     colorText: string;
+    hasIcon: boolean;
 }
 
 export const ButtonContainer = styled.TouchableOpacity<Button>`
     height: ${RFValue(50)}px;
     width: auto;
-    padding-left: ${RFValue(5)}px;
     border-radius: ${RFValue(10)}px;
-    justify-content: center;
+    ${({ hasIcon }) => hasIcon 
+        ? css`
+            justify-content: flex-start;
+            padding-left: ${RFValue(25)}px;
+        ` 
+        : css`
+            justify-content: center;
+    `};
     align-items: center;
     flex-direction: row;
-    background-color: ${(props) => props.color};
+    background-color: ${({ color }) => color};
 `;
 
 export const TitleButton = styled.Text<Button>`
     font-family: ${theme.fonts.TextButton};
     font-size: ${RFValue(17)}px;
-    color: ${(props)=> props.colorText ? props.colorText : theme.colors.button};
+    ${({ hasIcon }) => hasIcon && css` margin-left: ${RFValue(25)}px;`};
+    color: ${({ colorText }) => colorText ? colorText : theme.colors.button};
 `;
