@@ -1,12 +1,14 @@
 import React from 'react';
-import { Container, ListItems } from './styles';
 import { Header } from '../../Components/Header';
 import { ContentData } from '../../Components/CotentData';
 import { Items } from '../../Components/Items';
 import { useNavigation } from '@react-navigation/native';
+import { useAuth } from '../../hooks/Auth';
+import { Container, ListItems, LogoutButton, Icon} from './styles';
 
 export function Dashboard() {
     const navigation = useNavigation();
+    const {signOut} = useAuth();
 
     const listItems = [
         {
@@ -30,6 +32,9 @@ export function Dashboard() {
     return (
         <Container >
             <Header title='Notas do dia' />
+            <LogoutButton onPress={signOut} >
+                <Icon name="sign-out-alt"/>
+            </LogoutButton>
             <ContentData>
                 <ListItems
                     data={listItems}

@@ -14,23 +14,23 @@ import offAlarmImg from '../global/Image/offAlarm.png';
 import onAlarmImg from '../global/Image/onAlarm.png';
 import offBoxImg from '../global/Image/offBox.png';
 import onBoxImg from '../global/Image/onBox.png';
+import { RFValue } from 'react-native-responsive-fontsize';
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
 export function TabBarRoutes() {
     return (
-        <Navigator screenOptions={{
-            tabBarStyle:{
-                paddingTop: Platform.OS === 'ios' ? 20 : 0,
-                height: 35,
+        <Navigator tabBarOptions={{
+            showLabel: false,
+            style:{
+                paddingTop: Platform.OS === 'ios' ? 10 : 0,
+                height: 40,
             },
         }}>
             <Screen
                 name="Dashboard"
                 component={Dashboard}
                 options={{
-                    headerShown: false,
-                    title: '',
                     tabBarIcon: (({ focused }) => (
                         <Image 
                             source={focused ? onCalendarImg : offCalendarImg} 
@@ -43,8 +43,6 @@ export function TabBarRoutes() {
                 name="Alarm"
                 component={Alarm}
                 options={{
-                    headerShown: false,
-                    title: '',
                     tabBarIcon: (({ focused }) => (
                         <Image 
                             source={focused ? onAlarmImg : offAlarmImg} 
@@ -57,8 +55,6 @@ export function TabBarRoutes() {
                 name="BoxDoctor"
                 component={BoxDoctor}
                 options={{
-                    headerShown: false,
-                    title: '',
                     tabBarIcon: (({ focused }) => (
                         <Image 
                             source={focused ? onBoxImg : offBoxImg}

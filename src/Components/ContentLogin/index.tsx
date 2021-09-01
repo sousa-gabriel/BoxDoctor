@@ -1,12 +1,38 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Container, Content } from './styles';
 import { Button } from '../../Components/Button';
 import { useNavigation } from '@react-navigation/native';
-import { Platform } from 'react-native';
+import { Platform, Alert, ActivityIndicator } from 'react-native';
+import { useAuth } from '../../hooks/Auth';
+import { theme } from '../../global/styles/themes';
 
 
 export function ContentLogin() {
+    const [isLoading, setIsLoading] = useState(false);
+    const {signInWithGoogle, signInWithApple } = useAuth()
     const navigation = useNavigation();
+
+    async function handlesingInWithGoogle(){
+        try {
+            setIsLoading(true);
+            return await signInWithGoogle();
+        } catch (error) {
+            console.log(error)
+            Alert.alert('Não foi possivel conectar-se a sua conta Google')
+            setIsLoading(false);
+        }
+    }
+    
+    async function handlesigInWithApple(){
+        try {
+            setIsLoading(true);
+            return await signInWithApple();
+        } catch (error) {
+            console.log(error);
+            Alert.alert('Não foi possivel conectar-se a sua conta Apple');
+            setIsLoading(false);
+        }
+    }
 
     return (
         <Content
@@ -27,7 +53,7 @@ export function ContentLogin() {
                     title='Entrar com o Google'
                     colorIcon='#FFF'
                     colorText='#FFF'
-                    onPress={() => { navigation.navigate('TabBarRoutes') }}
+                    onPress={handlesingInWithGoogle}
                 />
                 {
                     Platform.OS === 'ios' &&
@@ -37,10 +63,13 @@ export function ContentLogin() {
                         title='Entrar com a Apple'
                         colorIcon='#8F8F8F'
                         colorText='#8F8F8F'
-                        onPress={() => { navigation.navigate('TabBarRoutes') }}
+                        onPress={handlesigInWithApple}
                     />
                 }
             </Container>
+            {
+                    isLoading && <ActivityIndicator size='large' color={theme.colors.primary}/>
+                }
         </Content>
     )
 }
