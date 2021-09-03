@@ -39,7 +39,7 @@ function AuthProvider({ children }: AuthProps) {
     const [user, setUser] = useState<User>({} as User);
     const [userStorageLoading, setUserStorageLoading] = useState(true);
 
-    const userStorgeKey = '@gofinances:user';
+    const userStorgeKey = '@boxdoctor:user';
 
     async function signInWithGoogle() {
         try {

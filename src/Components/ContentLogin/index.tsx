@@ -1,16 +1,14 @@
 import React, {useState} from 'react';
-import { Container, Content } from './styles';
-import { Button } from '../../Components/Button';
-import { useNavigation } from '@react-navigation/native';
 import { Platform, Alert, ActivityIndicator } from 'react-native';
 import { useAuth } from '../../hooks/Auth';
+import { Button } from '../../Components/Button';
 import { theme } from '../../global/styles/themes';
+import { Container, Content } from './styles';
 
 
 export function ContentLogin() {
     const [isLoading, setIsLoading] = useState(false);
     const {signInWithGoogle, signInWithApple } = useAuth()
-    const navigation = useNavigation();
 
     async function handlesingInWithGoogle(){
         try {
@@ -40,13 +38,14 @@ export function ContentLogin() {
             showsVerticalScrollIndicator={false}
         >
             <Container >
-                <Button
+{/* todo ajustar para realizar o login com o Facebook */}
+                {/* <Button
                     color='#3B5998'
                     icon='facebook'
                     title='Entrar com o Facebook'
                     colorIcon='#FFF'
                     onPress={() => { navigation.navigate('TabBarRoutes') }}
-                />
+                /> */}
                 <Button
                     color='#3d8ff2'
                     icon='google'
