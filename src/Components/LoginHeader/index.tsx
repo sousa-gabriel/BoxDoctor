@@ -4,7 +4,7 @@ interface Props {
     title: string;
 }
 
-export function HeaderLogin({ title }: Props) {
+export function LoginHeader({ title }: Props) {
     return (
         <Container >
             <Title >

@@ -1,15 +1,15 @@
 import React from 'react';
-import { BackgroundLogin } from '../../Components/BackgroundLogin';
-import { ContentLogin } from '../../Components/ContentLogin';
-import { HeaderLogin } from '../../Components/HeaderLogin';
+import { LoginBackground } from '../../Components/LoginBackground';
+import { LoginContent } from '../../Components/LoginContent';
+import { LoginHeader } from '../../Components/LoginHeader';
 import { Container } from './styles';
 
 export function Login() {
     return (
         <Container >
-            <HeaderLogin title='BoxDoctor' />
-            <BackgroundLogin />
-            <ContentLogin />                    
+            <LoginHeader title='BoxDoctor' />
+            <LoginBackground />
+            <LoginContent />                    
         </Container>
     )
 }

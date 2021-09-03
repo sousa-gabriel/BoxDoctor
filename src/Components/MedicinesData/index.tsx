@@ -6,7 +6,6 @@ import { theme } from '../../global/styles/themes';
 import { ModalView } from '../../Components/ModalView';
 import { ButtonSelector } from '../../Components/ButtonSelector';
 import { SwitchMedicines } from '../SwitchMedicines';
-import { SmallInput } from '../SmallInput';
 import { Header } from '../Header';
 import uuid from 'react-native-uuid';
 import {
@@ -84,9 +83,7 @@ export function MedicinesData({ DataModal }: Props) {
                                 Hora e minuto
                             </TitleAlarm>
                             <ContentAlarm >
-                                <SmallInput maxLength={2} onChangeText={setHoras} />
-                                <Text> : </Text>
-                                <SmallInput maxLength={2} onChangeText={setMinutos} />
+                               
                             </ContentAlarm>
                         </ContainerAlarm>
                         <Button

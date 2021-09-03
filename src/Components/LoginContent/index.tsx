@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
 import { Platform, Alert, ActivityIndicator } from 'react-native';
 import { useAuth } from '../../hooks/Auth';
-import { Button } from '../../Components/Button';
+import { Button } from '../Button';
 import { theme } from '../../global/styles/themes';
 import { Container, Content } from './styles';
 
 
-export function ContentLogin() {
+export function LoginContent() {
     const [isLoading, setIsLoading] = useState(false);
     const {signInWithGoogle, signInWithApple } = useAuth()
 

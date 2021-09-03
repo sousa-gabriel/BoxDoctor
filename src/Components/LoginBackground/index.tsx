@@ -11,7 +11,7 @@ import BoxImg from '../../global/Image/Box.png';
 import PlusImg from '../../global/Image/Plus.png';
 import Doctor from '../../global/Image/Doctor.png';
 
-export function BackgroundLogin() {
+export function LoginBackground() {
     return (
         <>
             <ContainerBox >
