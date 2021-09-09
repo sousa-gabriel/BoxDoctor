@@ -39,3 +39,28 @@ export const TitleAlarm= styled.Text`
     font-family: ${theme.fonts.Title};
     color: ${theme.colors.primary};
 `;
+
+export const DateButton = styled.TouchableOpacity`
+    height: ${RFValue(50)}px;
+    width: ${RFValue(100)}px;
+    border-radius: ${RFValue(10)}px;
+    justify-content: center;
+    align-items: center;
+    background-color: ${theme.colors.background};
+    border-color: ${theme.colors.borderColor};
+    border-width: ${RFValue(1)}px;
+`;
+
+export const TextAlarm = styled.Text`
+    font-size: ${RFValue(25)}px;
+    font-family: ${theme.fonts.subtitle};
+    color: ${theme.colors.inputValue};
+    text-align: center;
+`;
+
+export const ViewTime = styled.View`
+    width: 100%;
+    height: ${RFValue(50)}px;
+    justify-content: center;
+
+`;

@@ -1,63 +1,62 @@
-import { StyleSheet } from "react-native";
-import { Colors } from "react-native/Libraries/NewAppScreen";
-import { theme } from "../../global/styles/themes";
+import { RFValue } from 'react-native-responsive-fontsize';
+import styled from 'styled-components/native';
+import { theme } from '../../global/styles/themes';
 
-export const styles = StyleSheet.create({
-    container:{
-        width: '100%',
-        height: 80,
-        marginBottom: 20,
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        alignItems: 'center',
-        borderWidth: 1,
-        borderColor: theme.colors.borderColor,
-        borderBottomColor: theme.colors.sucess,
-        borderBottomWidth: 5,
-        backgroundColor: theme.colors.BackgroundItem,
-        shadowColor: theme.colors.shadowColor,
-        shadowOpacity: 0.5,
-        shadowOffset: { width: 5, height: 3 },
-        shadowRadius: 2,
-        elevation: 10,
-    },
-    hours:{
-        fontFamily: theme.fonts.Title,
-        color: theme.colors.sucess,
-        fontSize: 20,
-    },
-    title:{
-        fontFamily: theme.fonts.Title,
-        color: theme.colors.sucess,
-        fontSize: 25,
-    },
-    subTitle:{
-        fontFamily: theme.fonts.Title,
-        color: theme.colors.sucess,
-        fontSize: 15,
-    },
-    icon:{
-        width: 35,
-        height: 35,
-        resizeMode: 'contain',
-    },
-    Power:{
-        width: 40,
-        height: 20,
-        borderRadius: 10,
-        backgroundColor: theme.colors.BackgroundItem,
-        justifyContent: 'center',
-        borderWidth: 1,
-        borderColor: theme.colors.borderColor,  
-        shadowColor: theme.colors.shadowColor,
-        shadowOpacity: 0.5,
-        shadowOffset: { width: 5, height: 3 },
-        shadowRadius: 2,
-        elevation: 5,
-    },
-    PowerSelector:{
-        width: 20,
-        height: 19,
-        borderRadius: 10,
-    }
-})
+export const Container = styled.TouchableOpacity`
+    width: 100%;
+    height: ${RFValue(80)}px;
+    margin-bottom: ${RFValue(20)}px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: ${RFValue(10)}px;
+    padding-right: ${RFValue(10)}px;
+    border-width: ${RFValue(1)}px;
+    border-color: ${theme.colors.borderColor};
+    border-bottom-color: ${theme.colors.success};
+    border-bottom-width: ${RFValue(5)}px;
+    background-color: ${theme.colors.BackgroundItem};
+`;
+export const Hours = styled.Text`
+    width: 20%;
+    height: 100%;
+    padding-top: 10%;
+    margin-right: ${RFValue(5)}px;
+    font-family: ${theme.fonts.Title};
+    color: ${theme.colors.success};
+    font-size: ${RFValue(20)}px;
+`;
+export const ContentTitle = styled.View`
+    width: 66%;
+    height: 100%;
+    justify-content: center;
+`;
+
+export const Title = styled.Text`
+    font-family: ${theme.fonts.Title};
+    color: ${theme.colors.success};
+    font-size: ${RFValue(25)}px;
+`;
+export const SubTitle = styled.Text`
+    font-family: ${theme.fonts.Title};
+    color: ${theme.colors.success};
+    font-size: ${RFValue(15)}px;
+`;
+export const Icon = styled.Image`
+    width: ${RFValue(35)}px;
+    height: ${RFValue(35)}px;
+`;
+export const Power = styled.TouchableOpacity`
+    width: ${RFValue(40)}px;
+    height: ${RFValue(20)}px;
+    border-radius: ${RFValue(10)}px;
+    justify-content: center;
+    margin-right: 10px;
+    border-width: ${RFValue(1)}px;
+    border-color: ${theme.colors.borderColor};
+`;
+export const PowerSelector = styled.View`
+    width: ${RFValue(20)}px;
+    height: ${RFValue(20)}px;
+    border-radius: ${RFValue(10)}px;
+`;

@@ -5,11 +5,11 @@ import { theme } from "../../global/styles/themes";
 
 export const Container = styled.View`
     height: 78%;
-    width: 80%;
+    width: 90%;
     margin-top: ${RFValue(20)}px;
-    padding-left: ${RFValue(20)}px;
-    padding-right: ${RFValue(20)}px;
-    margin-left: 10%;
+    padding-left: ${RFValue(5)}px;
+    padding-right: ${RFValue(5)}px;
+    margin-left: 5%;
     background-color: ${theme.colors.contentData};
     align-items: center;
     padding-top: ${RFValue(20)}px;

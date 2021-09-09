@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react';
+import { theme } from '../../global/styles/themes';
 import { Container } from './styles';
 
 interface Props {
@@ -7,7 +8,7 @@ interface Props {
 
 export function ContentData({ children }: Props) {
     return (
-        <Container >
+        <Container style={theme.colors.shadow}>
             {children}
         </Container>
     )

@@ -1,11 +1,55 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Header } from '../../Components/Header';
 import { Container } from './styles';
+import DateTimePicker from '@react-native-community/datetimepicker';
+import { View, Button, Platform, Text } from 'react-native';
+import { Feather } from '@expo/vector-icons';
 
 export function BoxDoctor() {
+    const [date, setDate] = useState(new Date());
+    const [show, setShow] = useState(false);
+    const [text, setText] = useState('Empty');
+
+    function onChange(event: Event, selectedDate: Date | undefined) {
+        const currentDate = selectedDate || date;
+        setShow(Platform.OS === 'ios');
+        setDate(currentDate);
+
+        let tempDate = new Date(currentDate);
+        let fTime = 'Horas:' + tempDate.getHours() + '| Minutos: ' + tempDate.getMinutes();
+        setText(fTime);
+    }
+
+
+    function showMode() {
+        setShow(true);
+    }
+
+
     return (
         <Container >
             <Header title='Box Doctor' />
+            <Button title='selecione a hora' onPress={showMode} />
+            <Text>{text}</Text>
+            <View style={{ width: 50, height: 50, backgroundColor: '#000' }}>
+                {
+                    show &&
+                    (
+                        <>
+                            <Feather name='clock' size={40} />
+
+                            <DateTimePicker
+                                testID='dateTimePicker'
+                                value={date}
+                                mode='time'
+                                is24Hour={true}
+                                display='default'
+                                onChange={onChange}
+                            />
+                        </>
+                    )
+                }
+            </View>
         </Container>
     )
 }

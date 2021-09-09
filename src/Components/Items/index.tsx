@@ -1,11 +1,11 @@
 import React from 'react';
-import { styles } from './styles';
 import { TouchableOpacity, TouchableOpacityProps, Text, Image, View } from 'react-native';
 import { theme } from '../../global/styles/themes';
 import Capsula from '../../global/Image/Pill.png';
 import Tablete from '../../global/Image/Tablet.png';
 import { useState } from 'react';
 
+import { Container, ContentTitle, Hours, Title, SubTitle, Icon, Power, PowerSelector } from './styles';
 export interface ItemsProps extends TouchableOpacityProps {
     id?: string;
     hours: string;
@@ -37,41 +37,42 @@ export function Items({ hours, title, amountMedicine, icon, status, active, ...r
         }
     }
     return (
-        <TouchableOpacity
-            style={[styles.container, { borderBottomColor: StatusSelector(status) }]}
+        <Container
+            style={{borderBottomColor: StatusSelector(status)}}
             activeOpacity={0.7}
             {...rest}
         >
-            <Text style={[styles.hours, { color: StatusSelector(status) }]}>
+            <Hours style={{ color: StatusSelector(status) }}>
+                {console.log(hours)}
                 {hours}
-            </Text>
-            <View>
-                <Text style={[styles.title, { color: StatusSelector(status) }]}>
+            </Hours>
+            <ContentTitle>
+                <Title style={{ color: StatusSelector(status) }}>
                     {title}
-                </Text>
-                <Text style={[styles.subTitle, { color: StatusSelector(status) }]}>
+                </Title>
+                <SubTitle style={{ color: StatusSelector(status) }}>
                     {amountMedicine} {icon === 'capsula' ? 'Capsulas' : 'Comprimido'}
-                </Text>
-            </View>
+                </SubTitle>
+            </ContentTitle>
             {
                 icon &&
-                <Image source={icon === 'capsula' ? Capsula : Tablete} style={styles.icon} />
+                <Icon source={icon === 'capsula' ? Capsula : Tablete} />
             }
             {
                 active &&
-                <TouchableOpacity onPress={handleSetStatusActive} style={[styles.Power,
+                <Power onPress={handleSetStatusActive} style={
                 { borderColor: statusActive ? theme.colors.success : theme.colors.borderColor,
                  alignItems: statusActive ? 'flex-end' : 'flex-start'}
-                ]} >
-                    <View
-                        style={[styles.PowerSelector,
+                } >
+                    <PowerSelector
+                        style={
                         { backgroundColor: statusActive 
                             ? theme.colors.success 
                             : theme.colors.borderColor}
-                        ]} />
-                </TouchableOpacity>
+                        } />
+                </Power>
             }
 
-        </TouchableOpacity >
+        </Container >
     )
 }

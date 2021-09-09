@@ -5,12 +5,13 @@ interface StorageDataProps {
   children: ReactNode;
 }
 
-interface NewAlarm {
-  id: string,
+export interface NewAlarm {
+  id: string | number[],
+  hours: string;
   title: string,
-  amountMedicine: number,
+  amountMedicine: string,
   icon: string,
-  status: 'inactive',
+  status: string,
 }
 
 interface IStorageDataContext {
@@ -20,7 +21,7 @@ interface IStorageDataContext {
 
 const AlarmDataContext = createContext({} as IStorageDataContext);
 
-function AlarmData({children}: StorageDataProps) {
+function AlarmDataProvider({children}: StorageDataProps) {
   const useAlarmKey = '@boxdoctor:alarm';
 
   async function insertRegister(NewAlarmData: NewAlarm) {
@@ -35,7 +36,7 @@ function AlarmData({children}: StorageDataProps) {
         JSON.stringify(responseformatted),
       );
     } catch (error) {
-      throw new Error(error);
+      throw new Error();
     }
   }
 
@@ -65,4 +66,4 @@ function useAlarmData() {
   return context;
 }
 
-export {AlarmData, useAlarmData};
+export {AlarmDataProvider, useAlarmData};
