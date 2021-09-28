@@ -15,14 +15,17 @@ import onAlarmImg from '../global/Image/onAlarm.png';
 import offBoxImg from '../global/Image/offBox.png';
 import onBoxImg from '../global/Image/onBox.png';
 import { RFValue } from 'react-native-responsive-fontsize';
+import { theme } from '../global/styles/themes';
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
 export function TabBarRoutes() {
     return (
         <Navigator tabBarOptions={{
-            showLabel: false,
-            style:{
+            // showLabel: false,
+            activeTintColor: theme.colors.primary,
+            inactiveTintColor: theme.colors.input,
+            style: {
                 paddingTop: Platform.OS === 'ios' ? 10 : 0,
                 height: 40,
             },
@@ -32,9 +35,9 @@ export function TabBarRoutes() {
                 component={Dashboard}
                 options={{
                     tabBarIcon: (({ focused }) => (
-                        <Image 
-                            source={focused ? onCalendarImg : offCalendarImg} 
-                            style={{height: 30, width:30, resizeMode: 'center'}}
+                        <Image
+                            source={focused ? onCalendarImg : offCalendarImg}
+                            style={{ height: 30, width: 30, resizeMode: 'center' }}
                         />
                     ))
                 }}
@@ -44,9 +47,9 @@ export function TabBarRoutes() {
                 component={Alarm}
                 options={{
                     tabBarIcon: (({ focused }) => (
-                        <Image 
-                            source={focused ? onAlarmImg : offAlarmImg} 
-                            style={{height: 30, width:30, resizeMode: 'center'}}
+                        <Image
+                            source={focused ? onAlarmImg : offAlarmImg}
+                            style={{ height: 30, width: 30, resizeMode: 'center' }}
                         />
                     ))
                 }}
@@ -56,9 +59,9 @@ export function TabBarRoutes() {
                 component={BoxDoctor}
                 options={{
                     tabBarIcon: (({ focused }) => (
-                        <Image 
+                        <Image
                             source={focused ? onBoxImg : offBoxImg}
-                            style={{height: 30, width:30, resizeMode: 'center'}}
+                            style={{ height: 30, width: 30, resizeMode: 'center' }}
                         />
                     ))
                 }}

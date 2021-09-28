@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Header } from '../../Components/Header';
-import { ContentData } from '../../Components/ContentData';
 import { Items } from '../../Components/Items';
 import { useNavigation } from '@react-navigation/native';
 import { useAuth } from '../../hooks/Auth';
@@ -35,25 +34,23 @@ export function Dashboard() {
             <LogoutButton onPress={signOut} >
                 <Icon name="sign-out-alt" />
             </LogoutButton>
-            <ContentData>
-                <ListItems
-                    data={data}
-                    keyExtractor={(item: { id: string; }) => item.id}
-                    showsVerticalScrollIndicator={false}
-                    showsHorizontalScrollIndicator={false}
-                    contentContainerStyle={{ width: '90%', paddingHorizontal: 5 }}
-                    renderItem={({ item }) => (
-                        <Items
-                            hours={item.hours}
-                            title={item.title}
-                            amountMedicine={item.amountMedicine}
-                            icon={item.icon}
-                            status={item.status}
-                            onPress={() => { console.log('oii') }}
-                        />
-                    )}
-                />
-            </ContentData>
+            <ListItems
+                data={data}
+                keyExtractor={(item: { id: string; }) => item.id}
+                showsVerticalScrollIndicator={false}
+                showsHorizontalScrollIndicator={false}
+                contentContainerStyle={{ width: '90%', paddingHorizontal: 5 }}
+                renderItem={({ item }) => (
+                    <Items
+                        hours={item.hours}
+                        title={item.title}
+                        amountMedicine={item.amountMedicine}
+                        icon={item.icon}
+                        status={item.status}
+                        onPress={() => { console.log('oii') }}
+                    />
+                )}
+            />
         </Container>
     )
 }

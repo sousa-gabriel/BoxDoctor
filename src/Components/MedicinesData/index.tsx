@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { Platform, View, Alert } from 'react-native';
+import { theme } from '../../global/styles/themes';
 import uuid from 'react-native-uuid';
+import { useAlarmData } from '../../hooks/Alarm';
 import { Input } from '../Input';
 import { Button } from '../Button';
-import { theme } from '../../global/styles/themes';
 import { ModalView } from '../../Components/ModalView';
 import { ButtonSelector } from '../../Components/ButtonSelector';
 import { SwitchMedicines } from '../SwitchMedicines';
 import { Header } from '../Header';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { RFValue } from 'react-native-responsive-fontsize';
-import { useAlarmData } from '../../hooks/Alarm';
 
 import {
     ContainerModal,
@@ -28,12 +28,11 @@ interface Props {
 }
 
 export function MedicinesData({ closeModal }: Props) {
-    const {insertRegister} = useAlarmData();
+    const { insertRegister } = useAlarmData();
     const [openModal, setOpenModal] = useState(false);
     const [medicineSelected, setMedicineSelected] = useState('capsula');
     const [nameMedicine, setNameMedicine] = useState('');
     const [quantityMedicine, setQuantityMedicine] = useState('');
-
     const [date, setDate] = useState(new Date());
     const [show, setShow] = useState(false);
     const [time, setTime] = useState('00:00');
@@ -56,7 +55,8 @@ export function MedicinesData({ closeModal }: Props) {
         let Hours = `${("0" + tempDate.getHours()).slice(-2)}:${("0" + tempDate.getMinutes()).slice(-2)}`;
         setTime(Hours);
     }
-     async function handleData() {        
+
+    async function handleData() {
         const newAlarm = {
             id: uuid.v4(),
             hours: time,
@@ -65,84 +65,82 @@ export function MedicinesData({ closeModal }: Props) {
             icon: medicineSelected,
             status: 'inactive',
         }
-        try{
+        try {
             return await insertRegister(newAlarm)
-        }catch(error){
+        } catch (error) {
             console.log(error);
             Alert.alert('Erro ao salvar seu remedio!!')
-        }finally{
+        } finally {
             closeModal();
         }
     }
 
     return (
-        <>
-            <ContainerModal>
-                <Header title="Cadastro de medicamentos" />
-                <Content >
-                    <View style={{ marginHorizontal: '10%', paddingBottom: 20 }}>
-                        <Title >Dados do Medicamentos:</Title>
-                        <Input
-                            name='Nome do medicamento'
-                            onChangeText={setNameMedicine}
-                        />
-                        <Input
-                            name='Quantidade de medicamentos'
-                            onChangeText={setQuantityMedicine}
-                            keyboardType={'numeric'}
-                        />
+        <ContainerModal>
+            <Header title="Cadastro de medicamentos" />
+            <Content >
+                <View style={{ marginHorizontal: '10%', paddingBottom: 20 }}>
+                    <Title >Dados do Medicamentos:</Title>
+                    <Input
+                        name='Nome do medicamento'
+                        onChangeText={setNameMedicine}
+                    />
+                    <Input
+                        name='Quantidade de medicamentos'
+                        onChangeText={setQuantityMedicine}
+                        keyboardType={'numeric'}
+                    />
 
-                        <ButtonSelector
-                            title={medicineSelected}
-                            onPress={OpenModalTypeMedicines}
-                            icon
-                        />
-                        <ContainerAlarm >
-                            <TitleAlarm >
-                                Hora do Alarme
-                            </TitleAlarm>
-                            <ContentAlarm >
-                                <DateButton onPress={() => { setShow(true) }} >
-                                    {Platform.OS === 'android' && <TextAlarm>{time}</TextAlarm>}
-                                    {
-                                        show &&
-                                        (
-                                            <ViewTime>
-                                                <DateTimePicker
-                                                    testID='dateTimePicker'
-                                                    value={date}
-                                                    mode='time'
-                                                    is24Hour={true}
-                                                    display='default'
-                                                    onChange={onChange}
-                                                />
-                                            </ViewTime>
-                                        )
-                                    }
-                                </DateButton>
-                            </ContentAlarm>
-                        </ContainerAlarm>
-                        <Button
-                            title="Confirmar"
-                            color={theme.colors.buttonBackground}
-                            onPress={handleData}
-                        />
-                        <View style={{ marginTop: RFValue(20) }} />
-                        <Button
-                            title="Cancelar"
-                            color={theme.colors.attention}
-                            onPress={closeModal}
-                        />
+                    <ButtonSelector
+                        title={medicineSelected}
+                        onPress={OpenModalTypeMedicines}
+                        icon
+                    />
+                    <ContainerAlarm >
+                        <TitleAlarm >
+                            Hora do Alarme
+                        </TitleAlarm>
+                        <ContentAlarm >
+                            <DateButton onPress={() => { setShow(true) }} >
+                                {Platform.OS === 'android' && <TextAlarm>{time}</TextAlarm>}
+                                {
+                                    show &&
+                                    (
+                                        <ViewTime>
+                                            <DateTimePicker
+                                                testID='dateTimePicker'
+                                                value={date}
+                                                mode='time'
+                                                is24Hour={true}
+                                                display='default'
+                                                onChange={onChange}
+                                            />
+                                        </ViewTime>
+                                    )
+                                }
+                            </DateButton>
+                        </ContentAlarm> 
+                    </ContainerAlarm>
+                    <Button
+                        title="Confirmar"
+                        color={theme.colors.buttonBackground}
+                        onPress={handleData}
+                    />
+                    <View style={{ marginTop: RFValue(20) }} />
+                    <Button
+                        title="Cancelar"
+                        color={theme.colors.attention}
+                        onPress={closeModal}
+                    />
 
-                        <ModalView
-                            closeModal={() => CloseModalTypeMedicines(medicineSelected)}
-                            visible={openModal}
-                        >
-                            <SwitchMedicines CloseModal={CloseModalTypeMedicines} />
-                        </ModalView>
-                    </View>
-                </Content>
-            </ContainerModal>
-        </>
+                    <ModalView
+                        closeModal={() => CloseModalTypeMedicines(medicineSelected)}
+                        visible={openModal}
+                    >
+                        <SwitchMedicines CloseModal={CloseModalTypeMedicines} />
+                    </ModalView>
+                </View>
+            </Content>
+        </ContainerModal>
     )
 }
