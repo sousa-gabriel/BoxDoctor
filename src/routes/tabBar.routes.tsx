@@ -14,7 +14,6 @@ import offAlarmImg from '../global/Image/offAlarm.png';
 import onAlarmImg from '../global/Image/onAlarm.png';
 import offBoxImg from '../global/Image/offBox.png';
 import onBoxImg from '../global/Image/onBox.png';
-import { RFValue } from 'react-native-responsive-fontsize';
 import { theme } from '../global/styles/themes';
 
 const { Navigator, Screen } = createBottomTabNavigator();
@@ -22,12 +21,12 @@ const { Navigator, Screen } = createBottomTabNavigator();
 export function TabBarRoutes() {
     return (
         <Navigator tabBarOptions={{
-            // showLabel: false,
+            showLabel: false,
             activeTintColor: theme.colors.primary,
             inactiveTintColor: theme.colors.input,
             style: {
-                paddingTop: Platform.OS === 'ios' ? 10 : 0,
-                height: 40,
+                paddingTop: 10,
+                height: '5%',
             },
         }}>
             <Screen
@@ -37,7 +36,7 @@ export function TabBarRoutes() {
                     tabBarIcon: (({ focused }) => (
                         <Image
                             source={focused ? onCalendarImg : offCalendarImg}
-                            style={{ height: 30, width: 30, resizeMode: 'center' }}
+                            style={{ height: 25, width: 25, resizeMode: 'contain' }}
                         />
                     ))
                 }}
@@ -49,7 +48,7 @@ export function TabBarRoutes() {
                     tabBarIcon: (({ focused }) => (
                         <Image
                             source={focused ? onAlarmImg : offAlarmImg}
-                            style={{ height: 30, width: 30, resizeMode: 'center' }}
+                            style={{ height: 25, width: 25, resizeMode: 'contain' }}
                         />
                     ))
                 }}
@@ -61,7 +60,7 @@ export function TabBarRoutes() {
                     tabBarIcon: (({ focused }) => (
                         <Image
                             source={focused ? onBoxImg : offBoxImg}
-                            style={{ height: 30, width: 30, resizeMode: 'center' }}
+                            style={{ height: 25, width: 25, resizeMode: 'contain' }}
                         />
                     ))
                 }}
