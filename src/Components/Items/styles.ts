@@ -11,8 +11,6 @@ export const Container = styled.TouchableOpacity`
     align-items: center;
     padding-left: ${RFValue(10)}px;
     padding-right: ${RFValue(10)}px;
-    border-width: ${RFValue(1)}px;
-    border-color: ${theme.colors.borderColor};
     border-bottom-color: ${theme.colors.success};
     border-bottom-width: ${RFValue(5)}px;
     background-color: ${theme.colors.BackgroundItem};

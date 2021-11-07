@@ -4,6 +4,7 @@ import * as AuthSession from 'expo-auth-session';
 import * as AppleAuthentication from 'expo-apple-authentication';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { UserAlarm } from '../services/interfacesServices';
 
 const { CLIENT_ID } = process.env;
 const { REDIRECT_URI } = process.env;
@@ -11,11 +12,13 @@ const { REDIRECT_URI } = process.env;
 interface AuthProps {
     children: ReactNode;
 }
-interface User {
+export interface User {
     id: string;
     name: string;
     email: string;
     photo?: string;
+    Alarms?: UserAlarm[];
+
 }
 
 interface AutorizationResponse{
@@ -59,9 +62,9 @@ function AuthProvider({ children }: AuthProps) {
                     id: userInfo.id,
                     email: userInfo.email,
                     name: userInfo.name,
-                    photo: userInfo.picture
+                    photo: userInfo.picture,
+                    Alarms: [],
                 }
-
                 setUser(userLogged)
                 await AsyncStorage.setItem(userStorgeKey, JSON.stringify(userLogged));
             }

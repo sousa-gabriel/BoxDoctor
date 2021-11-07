@@ -6,15 +6,19 @@ import { Items } from '../../Components/Items';
 import { ModalView } from '../../Components/ModalView';
 import { MedicinesData } from '../../Components/MedicinesData';
 import { ItemsProps } from '../../Components/Items';
-import { NewAlarm, useAlarmData } from '../../hooks/Alarm';
-import { useNavigation } from '@react-navigation/native';
 import { theme } from '../../global/styles/themes';
+import { useGetAlarms } from '../../hooks/Alarm';
+import { useIsFocused } from '@react-navigation/core';
 
 export function Alarm() {
-    const navigation = useNavigation();
     const [openModal, setOpenModal] = useState(false);
-    const { SearchRegister } = useAlarmData();
-    const [data, setData] = useState<NewAlarm[]>([]);
+    const {getAlarmAll, Alarms} = useGetAlarms();
+    const isFocused = useIsFocused();
+
+    useEffect(() => {
+        getAlarmAll();
+    }, [getAlarmAll, isFocused]);
+
 
     function OpenModal() {
         setOpenModal(true);
@@ -24,21 +28,6 @@ export function Alarm() {
         setOpenModal(false);
     }
 
-    async function loadData() {
-        try {
-            const response = await SearchRegister();
-
-            if (response) {
-                const alarms = response ? JSON.parse(response) : [];
-                setData(alarms);
-            }
-        } catch (error) {
-            console.log(error);
-        }
-    }
-    useEffect(() => {
-        loadData();
-    }, [openModal]);
 
     function handleAlarmItems(ItemSelected: ItemsProps) {
         console.log(ItemSelected)
@@ -50,8 +39,8 @@ export function Alarm() {
             <Subtitle > Lista de Alarmes</Subtitle>
             <Content>
                 <FlatList
-                    data={data}
-                    keyExtractor={item => item.id}
+                    data={Alarms}
+                    keyExtractor={(item) => `id-${item.id}`}
                     showsVerticalScrollIndicator={false}
                     showsHorizontalScrollIndicator={false}
                     contentContainerStyle={{ width: '100%', paddingHorizontal: 5 }}

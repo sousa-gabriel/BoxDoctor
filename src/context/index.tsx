@@ -1,5 +1,4 @@
 import React, {ReactNode} from 'react';
-import { AlarmDataProvider } from './Alarm';
 import { AuthProvider } from './Auth';
 
 interface Props {
@@ -9,9 +8,7 @@ interface Props {
 export function Providers({children}:Props){
     return(
         <AuthProvider>
-            <AlarmDataProvider >
-                {children}
-            </AlarmDataProvider>
+            {children}
         </AuthProvider>
     )
 }

@@ -4,7 +4,6 @@ export const theme = {
     //General Colors
         contentData: '#F1F1F1',
         primary: '#5BD2FF',
-        primaryLigth: 'rgba(91,210,255,0.5)',    
         success: '#49E1B8',
         successLight: 'rgba(73, 255,184, 0.5)',
         Loading: '#FE710C',

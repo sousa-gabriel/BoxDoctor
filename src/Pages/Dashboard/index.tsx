@@ -1,46 +1,45 @@
-import React, { useState, useEffect } from 'react';
-import { Header } from '../../Components/Header';
+import React, { useEffect } from 'react';
 import { Items } from '../../Components/Items';
-import { useNavigation } from '@react-navigation/native';
-import { useAuth } from '../../hooks/Auth';
-import { NewAlarm, useAlarmData } from '../../hooks/Alarm';
-import { Container, ListItems, LogoutButton, Icon } from './styles';
+import { useAuth } from '../../context/Auth';
+import { 
+    Container, 
+    ListItems, 
+    LogoutButton, 
+    Icon, 
+    DoctorContent, 
+    DoctorName, 
+    DoctorPhoto
+} from './styles';
+import { useGetAlarms } from '../../hooks/Alarm';
+import { useIsFocused } from '@react-navigation/core';
+import { useCreatedUser } from '../../hooks/User';
 
 export function Dashboard() {
-    const navigation = useNavigation();
-    const { signOut } = useAuth();
-    const { SearchRegister } = useAlarmData();
-    const [data, setData] = useState<NewAlarm[]>([]);
+    const { signOut, user } = useAuth();
+    const {getAlarmAll, Alarms} = useGetAlarms();
+    const isFocused = useIsFocused();
+    const {CreatedUser} = useCreatedUser();
 
-    async function loadData() {
-        try {
-            const response = await SearchRegister();
-
-            if (response) {
-                const alarms = response ? JSON.parse(response) : [];
-                setData(alarms);
-            }
-        } catch (error) {
-            console.log(error);
-        }
-    }
     useEffect(() => {
-        loadData();
-    }, []);
+        getAlarmAll();
+        CreatedUser();
+    }, [getAlarmAll, isFocused]);
 
     return (
-        <Container >
-            <Header title='Notas do dia' />
+        <Container >           
+            <DoctorContent>
+                <DoctorPhoto source={{uri: user.photo}}/>
+                <DoctorName>{user.name}</DoctorName>
+            </DoctorContent>
             <LogoutButton onPress={signOut} >
                 <Icon name="sign-out-alt" />
             </LogoutButton>
             <ListItems
-                data={data}
-                keyExtractor={(item: { id: string; }) => item.id}
-                showsVerticalScrollIndicator={false}
+                data={Alarms}
+                keyExtractor={(item) => `id-${item.id}`}
                 showsHorizontalScrollIndicator={false}
-                contentContainerStyle={{ width: '90%', paddingHorizontal: 5 }}
-                renderItem={({ item }) => (
+                contentContainerStyle={{ width: '100%', marginTop: 20 }}
+                renderItem={( {item} ) => (
                     <Items
                         hours={item.hours}
                         title={item.title}

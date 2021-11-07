@@ -3,8 +3,8 @@ import { useFonts } from 'expo-font';
 import { Rajdhani_500Medium, Rajdhani_700Bold } from '@expo-google-fonts/rajdhani';
 import { Roboto_400Regular, Roboto_500Medium, Roboto_700Bold } from '@expo-google-fonts/roboto';
 import AppLoading from 'expo-app-loading';
-import { useAuth } from './src/hooks/Auth';
-import { Providers } from './src/hooks';
+import { useAuth } from './src/context/Auth';
+import { Providers } from './src/context';
 
 import { StatusBar } from 'react-native';
 import { Router } from './src/routes';

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { Platform, Alert, ActivityIndicator } from 'react-native';
-import { useAuth } from '../../hooks/Auth';
+import { useAuth } from '../../context/Auth';
 import { Button } from '../Button';
 import { theme } from '../../global/styles/themes';
 import { Container, Content } from './styles';

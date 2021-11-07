@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import { AuthRoutes } from "./auth.routes";
 import { AppRoutes } from "./app.routes";
-import { useAuth } from "../hooks/Auth";
+import { useAuth } from "../context/Auth";
 
 export function Router() {
     const { user } = useAuth();

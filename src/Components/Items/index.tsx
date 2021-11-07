@@ -10,7 +10,7 @@ export interface ItemsProps extends TouchableOpacityProps {
     id?: string;
     hours: string;
     title: string;
-    amountMedicine: string;
+    amountMedicine: number;
     status: string;
     icon?: string;
     active?: boolean;
@@ -56,7 +56,10 @@ export function Items({ hours, title, amountMedicine, icon, status, active, ...r
             </ContentTitle>
             {
                 icon &&
-                <Icon source={icon === 'capsula' ? Capsula : Tablete} />
+                <Icon 
+                    source={icon === 'capsula' ? Capsula : Tablete} 
+                    style={{resizeMode: 'contain'}} 
+                />
             }
             {
                 active &&

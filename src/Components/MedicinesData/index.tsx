@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
-import { Platform, View, Alert } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { Platform, View } from 'react-native';
 import { theme } from '../../global/styles/themes';
 import uuid from 'react-native-uuid';
-import { useAlarmData } from '../../hooks/Alarm';
 import { Input } from '../Input';
 import { Button } from '../Button';
 import { ModalView } from '../../Components/ModalView';
@@ -11,6 +10,7 @@ import { SwitchMedicines } from '../SwitchMedicines';
 import { Header } from '../Header';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { RFValue } from 'react-native-responsive-fontsize';
+import { useCreatedNewAlarm, useGetAlarms } from '../../hooks/Alarm';
 
 import {
     ContainerModal,
@@ -23,12 +23,13 @@ import {
     TextAlarm,
     ViewTime
 } from './styles';
+
 interface Props {
     closeModal: () => void;
 }
 
 export function MedicinesData({ closeModal }: Props) {
-    const { insertRegister } = useAlarmData();
+    const {CreatedNewAlarm} = useCreatedNewAlarm();
     const [openModal, setOpenModal] = useState(false);
     const [medicineSelected, setMedicineSelected] = useState('capsula');
     const [nameMedicine, setNameMedicine] = useState('');
@@ -36,6 +37,8 @@ export function MedicinesData({ closeModal }: Props) {
     const [date, setDate] = useState(new Date());
     const [show, setShow] = useState(false);
     const [time, setTime] = useState('00:00');
+    const { getAlarmAll, Alarms } = useGetAlarms();
+
 
     function OpenModalTypeMedicines() {
         setOpenModal(true);
@@ -65,15 +68,14 @@ export function MedicinesData({ closeModal }: Props) {
             icon: medicineSelected,
             status: 'inactive',
         }
-        try {
-            return await insertRegister(newAlarm)
-        } catch (error) {
-            console.log(error);
-            Alert.alert('Erro ao salvar seu remedio!!')
-        } finally {
-            closeModal();
-        }
+        
+        CreatedNewAlarm(Alarms, newAlarm);
+        closeModal();
     }
+
+    useEffect(() => {
+        getAlarmAll();
+    }, [getAlarmAll]);
 
     return (
         <ContainerModal>
@@ -130,7 +132,7 @@ export function MedicinesData({ closeModal }: Props) {
                     <Button
                         title="Cancelar"
                         color={theme.colors.attention}
-                        onPress={closeModal}
+                        onPress={()=>closeModal()}
                     />
 
                     <ModalView
